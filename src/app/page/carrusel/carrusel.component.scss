@@ -56,3 +56,53 @@ $animationSpeed: 40s;
         object-fit: contain;
     }
 }
+@media (max-width:414px){
+	
+	.slider {
+		background: white;
+		height: 50px;
+		margin: auto;
+		overflow:hidden;
+		position: relative;
+		width: 100%;
+		
+		&::before,
+		&::after {
+			content: "";
+			height: 100px;
+			position: absolute;
+			width: 100%;
+			z-index: 2;
+		}
+		
+		&::after {
+			right: 0;
+			top: 0;
+			transform: rotateZ(180deg);
+		}
+	
+		&::before {
+			left: 0;
+			top: 0;
+		}
+		
+		.slide-track {
+			animation: scroll $animationSpeed linear infinite;
+			display: flex;
+			width: calc(250px * 14);
+		}
+		
+		.slide {
+			height: 50px;
+			width: 250px;
+			margin:0 20px;
+			display: flex;
+			align-items: center;
+		}
+	
+		.slide img{
+			object-fit: contain;
+		}
+	}
+	
+}
