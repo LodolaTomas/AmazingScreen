@@ -5,13 +5,23 @@
 form {
   width: 40%;
 }
-@media (max-width: 414px) {
+@media (min-width: 1200px) {
   .navbar-img-logo {
     width: 14rem;
+  }
+  .info{
+    word-break: break-all;
+    width: 70px;
   }
 }
 @media (max-width: 1200px) {
   form {
+    width: 100%;
+  }
+  .info{
+    font: 2.5rem;
+  }
+  .navbar-img-logo {
     width: 100%;
   }
 }
@@ -29,6 +39,11 @@ ul {
 }
 a {
   margin: auto;
+}
+.info{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  
 }
 .facebook {
   color: #16a6fb !important;
@@ -75,3 +90,4 @@ video.fullscreen {
 .content {
   z-index: 1;
 }
+
