@@ -1,68 +1,179 @@
-<div class="mt-1">
+<div class="container-xl">
     <app-carrusel></app-carrusel>
-    <aside class="aside p-3 mt-1">
-        <div class="filter_list">
-            <button type="button" class="btn active">Todo</button>
-            <button type="button" class="btn">Asus</button>
-            <button type="button" class="btn">Acer</button>
-            <button type="button" class="btn">TUF</button>
-            <button type="button" class="btn">LG</button>
-        </div>
-    </aside>
+    <div class="flex">
+        <aside class="aside p-3 mt-1" style="background-color: #082032;">
+            <h3 style="color: #f2f2f2; text-align: center;">Filtros</h3>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            MONITORES
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <button type="button" class="btn btn-outline-dark">ASUS</button>
+                            <button type="button" class="btn btn-outline-dark">LG</button>
+                            <button type="button" class="btn btn-outline-dark">ACER</button>
+                            <button type="button" class="btn btn-outline-dark">SAMSUNG</button>
+                            <button type="button" class="btn btn-outline-dark">BENQ</button>
+                            <button type="button" class="btn btn-outline-dark">AORUS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            PLACAS DE VIDEO
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <button type="button" class="btn btn-outline-dark">NVIDIA</button>
+                            <button type="button" class="btn btn-outline-dark">AMD</button>
+                            <button type="button" class="btn btn-outline-dark">EVGA</button>
+                            <button type="button" class="btn btn-outline-dark">MSI</button>
+                            <button type="button" class="btn btn-outline-dark">ASUS</button>
+                            <button type="button" class="btn btn-outline-dark">GIGABYTE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            VARIOS
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <button type="button" class="btn btn-outline-dark">INTEL</button>
+                            <button type="button" class="btn btn-outline-dark">PERIFERICOS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
 
-    <main class="main mt-1">
-        <div aria-label="breadcrumb" style="display: flex;">
-            <ol class="breadcrumb" style="margin: auto;">
-                <li class="breadcrumb-item active"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Products</li>
-            </ol>
-        </div>
-        <div class="flex-container mt-1">
-            <div class="card-item">
-                <img src="../../../assets/slider/MonitorTUFGamingVG259QM.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Consultar Stock</a>
+        <main class="main mt-1" style="background-color: #2C394B; color: #f2f2f2f2;">
+            <div aria-label="breadcrumb" style="display: flex;">
+                <ol class="breadcrumb" style="margin: auto; font-size: 1.5rem;">
+                    <li class="breadcrumb-item active"><a>Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                </ol>
+            </div>
+            <div class="flex-container mt-1">
+                <div class="card-item">
+                    <div class="card-img">
+                        <img src="../../../assets/slider/MonitorTUFGamingVG259QM.png" class="card-img-top"
+                            alt="Monitor TUF Gaming VG259QM">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <div class="card-button">
+                            <a href="#" class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-img">
+                        <img src="../../../assets/slider/PredatorXB271HU.png" class="card-img-top"
+                            alt="PredatorXB271HU">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <div class="card-button">
+                            <a href="#" class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-img">
+                        <img src="../../../assets/slider/TUFF15.png" class="card-img-top"
+                            alt="Monitor TUF Gaming VG259QM">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <div class="card-button">
+                            <a href="#" class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-img">
+                    <img src="../../../assets/slider/Acer-monitor-VG271U-main.png" class="card-img-top"
+                        alt="Monitor TUF Gaming VG259QM">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <div class="card-button">
+                            <a href="#" class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-img">
+                    <img src="../../../assets/slider/ACER-XB273GX.png" class="card-img-top"
+                        alt="Monitor TUF Gaming VG259QM">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <div class="card-button">
+                            <a href="#" class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-img">
+                    <img src="../../../assets/slider/LG-monitor-01.png" class="card-img-top"
+                        alt="Monitor TUF Gaming VG259QM">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <div class="card-button">
+                            <a href="#" class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-img">
+                    <img src="../../../assets/slider/MonitorTUFGamingVG259QM.png" class="card-img-top"
+                        alt="Monitor TUF Gaming VG259QM">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                        <div class="card-button">
+                            <a href="#" class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card-item">
-                <img src="../../../assets/slider/PredatorXB271HU.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Consultar Stock</a>
-                </div>
-            </div>
-            <div class="card-item">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Consultar Stock</a>
-                </div>
-            </div>
-            <div class="card-item">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Consultar Stock</a>
-                </div>
-            </div>
-            <div class="card-item">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Consultar Stock</a>
-                </div>
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </div>
