@@ -1,14 +1,8 @@
-*{
-  -moz-user-select: -moz-none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
-}
+
 .flex{
   margin: 0 auto;
-  font-family: 'Raleway', sans-serif;
-  font-weight:  400;
+  font-family: 'Poppins', sans-serif;
+  font-weight:  300;
 }
 main {
   background: #ddd;
@@ -16,7 +10,7 @@ main {
 aside {
   background: #ccc;
 }
-@media screen and (min-width: 481px) and (min-width: 718px) {
+@media screen and (min-width: 481px) and (min-width: 960px) {
   main {
     float: left;
     width: 80%;
@@ -70,6 +64,7 @@ aside {
   background-color: #3E2C41;
   color: #f2f2f2f2;
 }
+
 .card-img{
   display: flex;
   height: 300px;
@@ -81,43 +76,12 @@ aside {
 .card-item:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+.card-title{
+  text-align: center;
+}
 .accordion-body button{
   display: block;
   margin: auto;
   width: 100%;
   margin: 5px 0;
 }
-/* .card-item {
-  margin: 1rem;
-  min-width: 15rem;
-  max-width: 19.2rem;
-  flex: 1;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  background-color: #FF4C29;
-  color: black;
-  display: flex;
-  position: relative;
-  .card-body{
-    z-index: -10;
-    position: absolute;
-    background-color: white;
-    height: 100%;
-    transition: all 259ms ease-in-out;
-    h5{
-      text-align: center;
-    }
-    .card-button{
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-    transform: translate(-50%, -50%);
-    }
-  }
-}
-.card-item:hover{
-  .card-body{
-    z-index: 10;
-  }
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-} */
