@@ -61,7 +61,7 @@ aside {
   flex: 1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  background-color: #3E2C41;
+  background-color: #00A9DE;
   color: #f2f2f2f2;
 }
 
@@ -71,6 +71,12 @@ aside {
   img{
     align-items: center;
     object-fit: contain;
+  }
+}
+.card-body{
+  height: 190px;
+  h2{
+    text-align: center;
   }
 }
 .card-item:hover{
