@@ -9,6 +9,8 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarruselComponent } from './page/carrusel/carrusel.component';
 import { SliderComponent } from './page/slider/slider.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginModule } from './components/login/login.module';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { SliderComponent } from './page/slider/slider.component';
     FooterComponent,
     CarruselComponent,
     SliderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
