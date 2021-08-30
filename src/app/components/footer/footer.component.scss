@@ -1,0 +1,30 @@
+footer {
+  color: #BBBBBB;
+  background: #262626;
+  .contact {
+      .information{
+          text-align: center;
+          h3{
+            font-size: 10px;
+            margin: 15px;
+            a{
+                text-decoration: none;
+                color: #BBBBBB;
+            }
+        }
+      }
+    img {
+      display: block;
+      margin: auto;
+      margin-top: 1em;
+      width: 20em;
+    }
+  }
+  .location {
+    margin: 0 auto;
+  }
+  .copyright{
+    text-align: center;
+    font-size: .75em;
+  }
+}
