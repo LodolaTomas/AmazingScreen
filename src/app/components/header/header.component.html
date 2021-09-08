@@ -1,28 +1,35 @@
 <header class="header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="Nav_Home">
+  <nav class="navbar navbar-expand-xl navbar-light bg-light" id="Nav_Home">
     <div class="navbar__container container">
-      <a class="navbar-brand">
-        <img src="../../../assets/img/logoCompleto.svg"  alt="Amazing Screeen - Argentina" class="navbar-img-logo">
+      <a class="navbar-brand" href="#home" rel="nofollow noopener noreferrer">
+        <img src="../../../assets/img/logoCompleto.svg" alt="Amazing Screeen - Argentina" class="navbar-img-logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
-        <form class="d-flex me-auto">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+        <form class="navbar__search me-auto">
+          <input class="form-control me-1" type="search" placeholder="Buscar" aria-label="Search" #texto>
+          <button class="btn btn-outline-primary" (click)="search(texto.value)"><i class="fas fa-search"></i></button>
         </form>
-        <div class="info mt-2">Nuestras Redes</div>
+          <div class="info mt-2">Nuestras Redes</div>
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link whatsapp" href="https://api.whatsapp.com/send?phone=5491127262156" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+            <a class="nav-link whatsapp" rel="nofollow noopener noreferrer"
+              href="https://api.whatsapp.com/send?phone=5491127262156" target="_blank"><i class="fab fa-whatsapp"></i>
+              Whatsapp</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link facebook" href="https://www.facebook.com/AmazingscreensARG" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
+            <a class="nav-link facebook" rel="nofollow noopener noreferrer"
+              href="https://www.facebook.com/AmazingscreensARG" target="_blank"><i class="fab fa-facebook-square"></i>
+              Facebook</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link instagram" target="_blank" href="https://www.instagram.com/amazingscreensarg/"><div class="insta" style="width: 6em;"><i class="fab fa-instagram"></i> Instagram</div></a>
+            <a class="nav-link instagram" rel="nofollow noopener noreferrer" target="_blank"
+              href="https://www.instagram.com/amazingscreensarg/">
+              <div class="insta" style="width: 6em;"><i class="fab fa-instagram"></i> Instagram</div>
+            </a>
           </li>
         </ul>
       </div>

@@ -11,7 +11,10 @@ import { CarruselComponent } from './page/carrusel/carrusel.component';
 import { SliderComponent } from './page/slider/slider.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginModule } from './components/login/login.module';
-
+import { SearchPipe } from './pipe/search.pipe';
+import { FilterPipe } from './pipe/filter.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +25,16 @@ import { LoginModule } from './components/login/login.module';
     CarruselComponent,
     SliderComponent,
     LoginComponent,
+    SearchPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule
+    LoginModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  padre:any;
+
   constructor() { }
 
   ngOnInit(): void {
     document.addEventListener('contextmenu', event => event.preventDefault());
   }
-
 }
