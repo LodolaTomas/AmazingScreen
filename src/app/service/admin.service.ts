@@ -11,8 +11,8 @@ export class AdminService {
 
    }
 
-   getAllCities(): Observable<any[]>{
-     return this.http.get<any[]>('https://amazingscreens-c83f7-default-rtdb.firebaseio.com/.json');
+   getAll(): Observable<any[]>{
+     return this.http.get<any[]>('https://amazingscreens-c83f7-default-rtdb.firebaseio.com/productos.json');
    }
 
 }

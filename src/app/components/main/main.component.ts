@@ -7,13 +7,22 @@ import { BuscadorService } from 'src/app/service/buscador.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  cosas: any;
+  cosas:Array<any>=[];
   message:string='';
   constructor(private service: AdminService,public search:BuscadorService) {
-    service.getAllCities().subscribe(data => this.cosas = data);
+    service.getAll().subscribe((data)=>{this.cosas= data;
+    console.log(this.cosas)});
   }
   ngOnInit(): void {
-    this.search.currentMessage.subscribe(mensaje=> console.log(mensaje))
+    this.search.currentMessage.subscribe(mensaje=>{
+      if(mensaje!=''){
+        this.setMessage(mensaje)
+      }
+    })
+  }
+
+  setMessage(mensaje:any){
+    this.message=mensaje;
   }
 
 }

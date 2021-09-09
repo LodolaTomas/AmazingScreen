@@ -67,9 +67,31 @@
                     <li class="breadcrumb-item active" aria-current="page">Productos</li>
                 </ol>
             </div>
-            <div class="flex-container mt-1">
-                <div class="card-item">
+            <div class="flex-container mt-1" *ngIf="(cosas | search:message) as producto">
+                <div class="card-item" *ngFor="let item of producto">
                     <div class="card-img">
+                        <img [src]=item.image class="card-img-top" alt="{{item.nombre}}">
+                    </div>
+                    <div class="card-body">
+                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h2>
+                        <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
+                        <div class="card-button">
+                            <a rel="nofollow noopener noreferrer" target="_blank"
+                                href="https://api.whatsapp.com/send?text=Hola, tenes stock de la {{item.nombre}}.&amp;phone=5491127262156"
+                                class="btn btn-primary">Consultar Stock</a>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="producto.length===0" style="margin: auto; position: relative; bottom: -30px;">
+                    <h1>Not Found</h1>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!--<div class="card-item">
+                    <div class="card-img" *ngFor="let item of cosas">
                         <img src="../../../assets/slider/MonitorTUFGamingVG259QM.png" class="card-img-top"
                             alt="Monitor TUF Gaming VG259QM">
                     </div>
@@ -80,8 +102,8 @@
                             <a  rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Asus Tuf Gaming VG259QM.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
                         </div>
                     </div>
-                </div>
-                <div class="card-item">
+                </div> \
+                    <div class="card-item">
                     <div class="card-img">
                         <img src="../../../assets/slider/PredatorXB271HU.png" class="card-img-top"
                             alt="PredatorXB271HU">
@@ -158,8 +180,4 @@
                             <a rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Asus Tuf Gaming VG27AQ.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </main>
-    </div>
-</div>
+                </div> -->
