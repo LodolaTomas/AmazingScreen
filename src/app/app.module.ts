@@ -15,6 +15,7 @@ import { SearchPipe } from './pipe/search.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,

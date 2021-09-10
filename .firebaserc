@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "amazingscreens-c83f7": {
+      "hosting": {
+        "AmazingScreen": [
+          "amazingscreens-c83f7"
+        ]
+      }
+    }
+  }
+}
