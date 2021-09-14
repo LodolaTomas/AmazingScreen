@@ -1,0 +1,49 @@
+
+form {
+    width: 40%;
+  }
+  nav {
+    background-color: #193549 !important;
+  }
+  @media (min-width: 1200px) {
+    .info {
+      word-break: break-all;
+      width: 70px;
+    }
+    .navbar-brand {
+      width: 20%;
+    }
+  }
+  @media (max-width: 1200px) {
+    form {
+      width: 100%;
+    }
+    .info {
+      font: 2.5rem;
+    }
+    .navbar-brand {
+      width: 12.5rem;
+      margin: 0 0 auto 0;
+    }
+  
+  }
+  .navbar__search {
+    display: flex;
+    justify-content: center;
+  }
+  form {
+    margin: auto;
+  }
+  .form-control {
+    max-width: 20rem;
+  }
+  .info {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    color: #f2f2f2f2;
+  }
+  
+  .navbar-nav a:hover {
+    border-bottom: 2px solid #00a9de;
+  }
+  

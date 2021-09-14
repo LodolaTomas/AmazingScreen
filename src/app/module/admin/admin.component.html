@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-xl navbar-light bg-light" id="Nav_Home">
+    <div class="navbar__container container">
+        <a class="navbar-brand" rel="nofollow noopener noreferrer">
+            <img src="../../../assets/img/logoCompleto.svg" alt="Amazing Screeen - Argentina" class="navbar-img-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
+            <form class="navbar__search me-auto">
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <div class="d-grid gap-2 mt-1">
+                    <button class="btn btn-danger " (click)="logOut()">
+                        Salir
+                    </button>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="main mt-4">
+    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Agregar Producto
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample">
+                <button type="button" class="btn btn-outline-success btn-lg">ALTA</button>
+                <button type="button" class="btn btn-outline-danger btn-lg">BAJA</button>
+                <button type="button" class="btn btn-outline-warning btn-lg">MODIFICAR</button>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Agregar Filtro
+                </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+                    <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this
+                    being filled with some actual content.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Editar Adicionales
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+                    <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting
+                    happening here in terms of content, but just filling up the space to make it look, at least at first
+                    glance, a bit more representative of how this would look in a real-world application.</div>
+            </div>
+        </div>
+    </div> -->
+    <div>
+        <label for="formFileLg" class="form-label">Foto</label>
+        <input class="form-control form-control-lg" id="formFileLg" type="file" (change)="detectFiles($event)">
+      </div>
+      <input class="form-control form-control-lg" type="text" placeholder="Descripcion" aria-label=".form-control-lg example">
+      <input class="form-control form-control-lg" type="text" placeholder="Nombre" aria-label=".form-control-lg example">
+      <button type="button" class="btn btn-outline-success" (click)="subirFoto()"></button>
+</main>
