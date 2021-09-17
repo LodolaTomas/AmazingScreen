@@ -10,6 +10,9 @@
 # dependencies
 /node_modules
 
+#enviroments
+/src/enviroments
+
 # profiling files
 chrome-profiler-events*.json
 
@@ -43,6 +46,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Local Netlify folder
-.netlify

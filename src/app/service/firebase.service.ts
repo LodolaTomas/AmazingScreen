@@ -1,35 +1,69 @@
-import { Injectable } from '@angular/core';
-import { initializeApp } from 'firebase/app';
-import { environment } from 'src/environments/environment.prod';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { Injectable, OnInit } from '@angular/core';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { HttpClient } from '@angular/common/http';
+import { Monitor } from '../class/monitor';
+import { AngularFirestore } from '@angular/fire/firestore/';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-  firebaseApp = initializeApp(environment.firebaseConfig);
-  auth = getAuth(this.firebaseApp);
-  private loggedIn = new BehaviorSubject<boolean>(false);
-  constructor(private router:Router) { }
 
-  get isLogged(): Observable<boolean> {
-    return this.loggedIn.asObservable();
+  private loggedIn = new BehaviorSubject<boolean>(false);
+  uploadPercent: Observable<any>;
+  userRef: AngularFireList<any> = null;
+  myAdmin: any;
+  arrayProducts:Array<any>=[];
+  constructor(private router: Router, public fireAuth: AngularFireAuth, private http: HttpClient, private storage: AngularFireStorage,
+    private db: AngularFireDatabase, private ds: AngularFirestore, private authAF: AngularFireAuth) {
+
+    this.userRef = this.db.list('/productos');
+    this.userRef.snapshotChanges().subscribe(data=>{
+      data.forEach(element=>{
+        this.arrayProducts.push(element.payload.val())
+      })
+    })
+  }
+
+  GetCurrentUser() {
+    return this.authAF.currentUser;
+  }
+
+  getAllProducts(): Array<any> {
+    return this.arrayProducts;
+  }
+
+  async getUser() {
+    let respon = await new Promise(resolve => {
+      this.userRef.snapshotChanges().subscribe(data => {
+        resolve(data[0].key);
+      });
+    })
+    console.log(respon)
+    this.myAdmin = respon
+  }
+
+  verifyAdmin(key: string): boolean {
+    console.log(this.myAdmin)
+    if (key === this.myAdmin) {
+      return true;
+    }
+    return false;
   }
 
   doLogin(correo: string, password: string): Promise<Boolean> {
-    return signInWithEmailAndPassword(this.auth, correo, password)
+    return this.fireAuth.signInWithEmailAndPassword(correo, password)
       .then((userCredential) => {
-        onAuthStateChanged(this.auth,user => {console.log(user.displayName)});
-        localStorage.setItem('token',userCredential.user.uid)
+        localStorage.setItem('token', userCredential.user.uid)
         this.loggedIn.next(true);
-        /* this.writeUserData(userCredential.user.uid,userCredential.user.email) */
-        
         return true
       })
       .catch((error) => {
-        console.log(error.code)
         switch (error.code) {
           case "auth/user-not-found":
             this.alert('error', "email invalido");
@@ -44,29 +78,16 @@ export class FirebaseService {
       });
   }
 
-  /* writeUserData(userId, email) {
-    const db = getDatabase();
-    set(ref(db, 'productos/' + userId), {
-      uid: userId,
-      email: email,
-    });
-  } */
-
   logout(): void {
-    signOut(this.auth).then(() => {
+    this.fireAuth.signOut().then(() => {
+      localStorage.removeItem('token')
       this.loggedIn.next(false);
       this.router.navigateByUrl('')
     })
   }
 
-  doRegister(): Promise<Boolean> {
-    return createUserWithEmailAndPassword(this.auth, 'correo', 'pass')
-      .then((userCredential) => {
-        return true;
-      })
-      .catch((error) => {
-        return false;
-      });
+  get isLogged(): Observable<boolean> {
+    return this.loggedIn.asObservable();
   }
 
   alert(icon: SweetAlertIcon, text: string) {
@@ -82,11 +103,39 @@ export class FirebaseService {
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       },
     });
-
     Toast.fire({
       icon: icon,
       title: text,
     });
+  }
+
+  createProducto(product: any) {
+    try {
+      let ref = this.db.database.ref("/productos/");
+      let uid = this.ds.createId();
+      product.uid = uid;
+      let storageRef = this.storage.ref(`/${uid}/${product.foto.name}`);
+      const task = this.storage.upload(`/${uid}/${product.foto.name}`, product.foto).then(() => {
+        storageRef.getDownloadURL().toPromise().then(url => {
+          product.foto = url;
+          ref.child(`${uid}`).set(product);
+        });
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  updateProducto(product: Monitor) {
+    this.userRef.snapshotChanges().subscribe(element=>{
+      element.forEach(data=>{
+        /* console.log(data.payload.val())
+        if(data.payload.val().uid=='fjyNyycRuzCAaL9VLRFy'){
+            product.foto=data.payload.val().foto;
+            this.userRef.update("fjyNyycRuzCAaL9VLRFy",product)
+        } */
+      })
+    })
   }
 
 }

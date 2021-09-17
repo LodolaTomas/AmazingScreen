@@ -9,10 +9,17 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarruselComponent } from './page/carrusel/carrusel.component';
 import { SliderComponent } from './page/slider/slider.component';
+
 import { SearchPipe } from './pipe/search.pipe';
 import { FilterPipe } from './pipe/filter.pipe';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import { environment } from 'src/environments/environment.prod';
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import { AngularFireModule } from '@angular/fire';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

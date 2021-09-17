@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
    this.fireAuth.doLogin(this.userForm.value.email,this.userForm.value.password)
    .then(resolve=>{
      if(resolve==true){
-      
       this.router.navigateByUrl('/admin')
      }
    })

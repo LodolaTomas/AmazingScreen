@@ -9,19 +9,17 @@ import { FirebaseService } from '../service/firebase.service';
 })
 export class CheckLoginGuard implements CanActivate {
   constructor(private authSvc: FirebaseService,private router:Router) {
-
   }
+
   canActivate(): Observable<boolean> {
     return this.authSvc.isLogged.pipe(
       take(1),
       map((isLogged: boolean) => {
-        if (!isLogged) {
-          localStorage.getItem('token')
-          
+        if (isLogged) {
           this.router.navigateByUrl('');
-          return false;
+          return true;
         }
-        return true;
+        return false;
       })
     )
   }
