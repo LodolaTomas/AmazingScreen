@@ -139,7 +139,7 @@ export class FirebaseService {
   }
 
   deleteProduct(product:any){
-    this.userRef.update(product.uid,{alta:true})
+    this.userRef.update(product.uid,{alta:false})
   }
 
 }

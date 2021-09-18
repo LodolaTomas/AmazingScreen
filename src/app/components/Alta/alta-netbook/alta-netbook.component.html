@@ -1,0 +1,78 @@
+<form novalidate [formGroup]="userForm" (ngSubmit)="onRegister()" class="container-sm mb-3">
+    <div class="row">
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombres"
+                formControlName="nombre" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="modelo">Modelo</label>
+            <input type="text" class="form-control" id="modelo" placeholder="ej.: VG259QM"
+                formControlName="modelo" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="tamanio">Tamaño</label>
+            <input type="text" class="form-control" id="tamanio" placeholder="ej.: 15,6' "
+                formControlName="tamanio" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="hertz">Hertz</label>
+            <input type="text" class="form-control" id="hertz" placeholder="ej.: 144Hz"
+                formControlName="hertz" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="tiempoRespuesta">Tiempo de Respuesta</label>
+            <input type="text" class="form-control" id="tiempoRespuesta" placeholder="ej.: 1ms"
+                formControlName="tiempoRespuesta" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="panel">Panel</label>
+            <input type="text" class="form-control" id="panel" placeholder="ej.: IPS, TN, LED"
+                formControlName="panel" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="resolucion">Resolucion</label>
+            <input type="text" class="form-control" id="resolucion" placeholder="ej.: 1920*1080"
+                formControlName="resolucion" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="procesador">Procesador</label>
+            <input type="text" class="form-control" id="procesador" placeholder="ej.: I9 10080k"
+                formControlName="procesador" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="grafica">Grafica</label>
+            <input type="text" class="form-control" id="grafica" placeholder="ej.: GTX 1650TI"
+                formControlName="grafica" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="ram">RAM</label>
+            <input type="text" class="form-control" id="ram" placeholder="ej.: 16GB"
+                formControlName="ram" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="capacidad">Capacidad</label>
+            <input type="text" class="form-control" id="capacidad" placeholder="ej.: 512GB"
+                formControlName="capacidad" />
+        </div>
+        <div class="form-group mt-4 col-md-6 d-flex justify-content-center align-items-center">
+            <label>G-Sync?</label>
+            <input class="form-check-input" style="width: 30px; height: 30px;" type="checkbox" value=""
+                id="flexCheckDefault" formControlName="gsync" />
+        </div>
+        <div class="form-group mt-4 col-md-6 d-flex justify-content-center align-items-center">
+            <label>Free-Sync?</label>
+            <input class="form-check-input" style="width: 30px; height: 30px;" type="checkbox" value=""
+                id="flexCheckDefault" formControlName="freesync" />
+        </div>
+        <div class="form-group mt-4 col-md-6">
+            <input type="file" class="form-control" aria-label="file example"
+                (change)="onUpload1($event)" formControlName="foto" />
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto mt-4">
+            <button type="submit" class="btn btn-success">
+                Registrar
+            </button>
+        </div>
+    </div>
+</form>

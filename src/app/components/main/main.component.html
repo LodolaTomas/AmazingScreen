@@ -67,13 +67,13 @@
                     <li class="breadcrumb-item active" aria-current="page">Productos</li>
                 </ol>
             </div>
-            <div class="flex-container mt-1" *ngIf="(cosas | search:message) as producto">
+            <article class="flex-container mt-1" *ngIf="(cosas | search:message) as producto">
                 <div class="card-item" *ngFor="let item of producto">
                     <div class="card-img">
                         <img [src]=item.image class="card-img-top" alt="{{item.nombre}}">
                     </div>
                     <div class="card-body">
-                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h2>
+                        <h1 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h1>
                         <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
                         <div class="card-button">
                             <a rel="nofollow noopener noreferrer" target="_blank"
@@ -85,7 +85,7 @@
                 <div *ngIf="producto.length===0" style="margin: auto; position: relative; bottom: -30px;">
                     <h1>Not Found</h1>
                 </div>
-            </div>
+            </article>
         </main>
     </div>
 </div>
