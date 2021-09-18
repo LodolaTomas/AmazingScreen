@@ -2,7 +2,7 @@
 <div class="container d-flex align-items-center justify-content-center vh-100">
     <div class="card" style="width: 30rem;">
         <div class="card-body">
-            <form novalidate (ngSubmit)="onLogin()" [formGroup]="userForm">
+            <form novalidate (ngSubmit)="onLogin()" [formGroup]="productForm">
                 <fieldset>
 
                     <div class="text-center h1">Login</div>
@@ -12,10 +12,10 @@
                         <input type="email" class="form-control" id="email" placeholder="Enter email"
                             formControlName="email" [class]="isValidField('email')" autocomplete="on"/>
                         <div class="invalid-feedback" style="font-family: sans-serif;">
-                            <span *ngIf="userForm.get('email')?.errors?.required">
+                            <span *ngIf="productForm.get('email')?.errors?.required">
                                 Please enter your email
                             </span>
-                            <span *ngIf="userForm.get('email')?.errors?.pattern">
+                            <span *ngIf="productForm.get('email')?.errors?.pattern">
                                 Please enter a valid email
                             </span>
                         </div>
@@ -25,16 +25,16 @@
                         <input type="password" class="form-control" id="password" placeholder="Password"
                             formControlName="password" [class]="isValidField('password')" autocomplete="on" />
                         <div class="invalid-feedback">
-                            <span *ngIf="userForm.get('password')?.errors?.required">
+                            <span *ngIf="productForm.get('password')?.errors?.required">
                                 Please enter your password
                             </span>
-                            <span *ngIf="userForm.get('password')?.errors?.minlength">
+                            <span *ngIf="productForm.get('password')?.errors?.minlength">
                                 the password must be longer than 8 characters
                             </span>
                         </div>
                     </div>
                     <div class="d-grid gap-2 mt-4 ">
-                        <button type="submit" class="btn btn-success " [disabled]="userForm.invalid">
+                        <button type="submit" class="btn btn-success " [disabled]="productForm.invalid">
                             Submit
                         </button>
                     </div>

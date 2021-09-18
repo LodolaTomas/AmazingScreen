@@ -11,7 +11,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class AltaMonitorComponent implements OnInit {
 
-  userForm: FormGroup;
+  productForm: FormGroup;
   foto1: File;
   constructor(private authSrv:FirebaseService, private fb: FormBuilder) { 
     this.initFormEspecialista();
@@ -21,7 +21,7 @@ export class AltaMonitorComponent implements OnInit {
   }
 
   private initFormEspecialista(): void {
-    this.userForm = this.fb.group({
+    this.productForm = this.fb.group({
       nombre: ['', Validators.required],
       modelo: ['', Validators.required],
       tamanio: ['', Validators.required],
@@ -38,16 +38,16 @@ export class AltaMonitorComponent implements OnInit {
   async onRegister() {
     let monitor: Monitor = new Monitor(
       '100',
-      this.userForm.value.nombre,
-      this.userForm.value.modelo,
+      this.productForm.value.nombre,
+      this.productForm.value.modelo,
       this.foto1,
-      this.userForm.value.tamanio,
-      this.userForm.value.hertz,
-      this.userForm.value.tiempoRespuesta,
-      this.userForm.value.panel,
-      this.userForm.value.resolucion,
-      this.userForm.value.gsync,
-      this.userForm.value.freesync,
+      this.productForm.value.tamanio,
+      this.productForm.value.hertz,
+      this.productForm.value.tiempoRespuesta,
+      this.productForm.value.panel,
+      this.productForm.value.resolucion,
+      this.productForm.value.gsync,
+      this.productForm.value.freesync,
       eTipo.Monitor,
     );
     

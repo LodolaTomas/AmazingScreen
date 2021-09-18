@@ -14,6 +14,6 @@ export class producto{
 export enum eTipo {
     Notebook,
     Monitor,
-    Grafica,
+    placadeVideo,
     Processador,
   }

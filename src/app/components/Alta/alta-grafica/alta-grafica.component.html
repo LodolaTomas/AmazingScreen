@@ -1,1 +1,28 @@
-<p>alta-grafica works!</p>
+<form novalidate [formGroup]="productForm" (ngSubmit)="onRegister()" class="container-sm mb-3">
+    <div class="row">
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombres"
+                formControlName="nombre" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="modelo">Modelo</label>
+            <input type="text" class="form-control" id="modelo" placeholder="ej.: VG259QM"
+                formControlName="modelo" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="ram">RAM</label>
+            <input type="text" class="form-control" id="ram" placeholder="ej.: I9 10080k"
+                formControlName="ram" />
+        </div>
+        <div class="form-group mt-4 col-md-6">
+            <input type="file" class="form-control" aria-label="file example"
+                (change)="onUpload1($event)" formControlName="foto" />
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto mt-4">
+            <button type="submit" class="btn btn-success">
+                Registrar
+            </button>
+        </div>
+    </div>
+</form>

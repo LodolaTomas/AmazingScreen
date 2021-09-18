@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   
   public flag = false;
   private isEmail = /\S+@\S+\.\S+/;
-  userForm:FormGroup;
+  productForm:FormGroup;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     
   }
   onLogin() {
-   this.fireAuth.doLogin(this.userForm.value.email,this.userForm.value.password)
+   this.fireAuth.doLogin(this.productForm.value.email,this.productForm.value.password)
    .then(resolve=>{
      if(resolve==true){
       this.router.navigateByUrl('/admin')
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   isValidField(field: string): string {
-    const validateField = this.userForm.get(field);
+    const validateField = this.productForm.get(field);
     return !validateField?.valid && validateField?.touched
       ? 'is-invalid'
       : validateField?.touched
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   private initForm(): void {
-    this.userForm = this.fb.group({
+    this.productForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });

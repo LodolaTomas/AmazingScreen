@@ -11,7 +11,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class AltaNetbookComponent implements OnInit {
 
-  userForm: FormGroup;
+  productForm: FormGroup;
   foto1: File;
   constructor(private authSrv:FirebaseService, private fb: FormBuilder) { 
     this.initFormEspecialista();
@@ -21,7 +21,7 @@ export class AltaNetbookComponent implements OnInit {
   }
 
   private initFormEspecialista(): void {
-    this.userForm = this.fb.group({
+    this.productForm = this.fb.group({
       nombre: ['', Validators.required],
       modelo: ['', Validators.required],
       tamanio: ['', Validators.required],
@@ -33,7 +33,7 @@ export class AltaNetbookComponent implements OnInit {
       freesync: ['', Validators.required],
       foto: ['', Validators.required],
       procesador: ['', Validators.required],
-      grafica: ['', Validators.required],
+      placadeVideo: ['', Validators.required],
       capacidad: ['', Validators.required],
       ram: ['', Validators.required],
     });
@@ -42,21 +42,21 @@ export class AltaNetbookComponent implements OnInit {
   async onRegister() {
     let monitor: Notebook = new Notebook(
       '',
-      this.userForm.value.nombre,
-      this.userForm.value.modelo,
+      this.productForm.value.nombre,
+      this.productForm.value.modelo,
       this.foto1,
-      this.userForm.value.tamanio,
-      this.userForm.value.hertz,
-      this.userForm.value.tiempoRespuesta,
-      this.userForm.value.panel,
-      this.userForm.value.resolucion,
-      this.userForm.value.gsync,
-      this.userForm.value.freesync,
+      this.productForm.value.tamanio,
+      this.productForm.value.hertz,
+      this.productForm.value.tiempoRespuesta,
+      this.productForm.value.panel,
+      this.productForm.value.resolucion,
+      this.productForm.value.gsync,
+      this.productForm.value.freesync,
       eTipo.Notebook,
-      this.userForm.value.procesador,
-      this.userForm.value.grafica,
-      this.userForm.value.capacidad,
-      this.userForm.value.ram,
+      this.productForm.value.procesador,
+      this.productForm.value.placadeVideo,
+      this.productForm.value.capacidad,
+      this.productForm.value.ram,
     );
     
     this.authSrv.createMonitor(monitor)
