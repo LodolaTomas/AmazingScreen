@@ -22,7 +22,7 @@
 </nav>
 
 <main class="main mt-4">
-    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -32,23 +32,95 @@
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                 data-bs-parent="#accordionFlushExample">
-                <button type="button" class="btn btn-outline-success btn-lg">ALTA</button>
-                <button type="button" class="btn btn-outline-danger btn-lg">BAJA</button>
-                <button type="button" class="btn btn-outline-warning btn-lg">MODIFICAR</button>
+                <form novalidate [formGroup]="userForm" (ngSubmit)="onRegister()" class="container-sm">
+                    <div class="row">
+                        <div class="form-group mt-4 col-md-6 text-center">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombres"
+                                formControlName="nombre" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6 text-center">
+                            <label for="modelo">Modelo</label>
+                            <input type="text" class="form-control" id="modelo" placeholder="ej.: VG259QM"
+                                formControlName="modelo" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6 text-center">
+                            <label for="tamanio">Tamaño</label>
+                            <input type="text" class="form-control" id="tamanio" placeholder="ej.: 15,6' "
+                                formControlName="tamanio" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6 text-center">
+                            <label for="hertz">Hertz</label>
+                            <input type="text" class="form-control" id="hertz" placeholder="ej.: 144Hz"
+                                formControlName="hertz" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6 text-center">
+                            <label for="tiempoRespuesta">Tiempo de Respuesta</label>
+                            <input type="text" class="form-control" id="tiempoRespuesta" placeholder="ej.: 1ms"
+                                formControlName="tiempoRespuesta" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6 text-center">
+                            <label for="panel">Panel</label>
+                            <input type="text" class="form-control" id="panel" placeholder="ej.: IPS, TN, LED"
+                                formControlName="panel" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6 text-center">
+                            <label for="panel">Resolucion</label>
+                            <input type="text" class="form-control" id="panel" placeholder="ej.: 1920*1080"
+                                formControlName="resolucion" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6 d-flex justify-content-center align-items-center">
+                            <label>G-Sync?</label>
+                            <input class="form-check-input" style="width: 30px; height: 30px;" type="checkbox" value=""
+                                id="flexCheckDefault" formControlName="gsync" />
+                        </div>
+                        <div class="form-group mt-4 col-md-6">
+                            <input type="file" class="form-control" aria-label="file example"
+                                (change)="onUpload1($event)" formControlName="foto" />
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                            <button type="submit" class="btn btn-success">
+                                Registrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    Agregar Filtro
+                    Editar Producto
                 </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                 data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
-                    <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this
-                    being filled with some actual content.</div>
+                <div class="flex-container mt-1">
+                    <div class="buscador mt-2" style="width: 100%;">
+                        <form class="navbar__search me-auto">
+                            <input class="form-control me-1" type="search" placeholder="Buscar" aria-label="Search" [(ngModel)]="filterPost">
+                            <button class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
+                          </form>
+                          <br>
+                    </div>
+                    <div class="card-item" *ngFor="let item of producto | search:filterPost">
+                        <div class="card-img">
+                            <img [src]=item.image class="card-img-top" alt="{{item.nombre}}">
+                        </div>
+                        <div class="card-body">
+                            <h2 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h2>
+                            <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
+                            <div class="card-button">
+                                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" (click)="editarMonitor(item)">
+                                    Editar
+                                </button>
+                                <button type="button" class="btn btn-outline-danger">Borrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="accordion-item">
@@ -63,81 +135,13 @@
                 <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
                     <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting
                     happening here in terms of content, but just filling up the space to make it look, at least at first
-                    glance, a bit more representative of how this would look in a real-world application.</div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <form novalidate [formGroup]="userForm" (ngSubmit)="onRegister()" class="container-sm">
-                <div class="row">
-                    <div class="form-group mt-4 col-md-6 text-center">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombres"
-                            formControlName="nombre" />
-                    </div>
-                    <div class="form-group mt-4 col-md-6 text-center">
-                        <label for="modelo">Modelo</label>
-                        <input type="text" class="form-control" id="modelo" placeholder="ej.: VG259QM"
-                            formControlName="modelo" />
-                    </div>
-                    <div class="form-group mt-4 col-md-6 text-center">
-                        <label for="tamanio">Tamaño</label>
-                        <input type="text" class="form-control" id="tamanio" placeholder="ej.: 15,6' "
-                            formControlName="tamanio" />
-                    </div>
-                    <div class="form-group mt-4 col-md-6 text-center">
-                        <label for="hertz">Hertz</label>
-                        <input type="text" class="form-control" id="hertz" placeholder="ej.: 144Hz"
-                            formControlName="hertz" />
-                    </div>
-                    <div class="form-group mt-4 col-md-6 text-center">
-                        <label for="tiempoRespuesta">Tiempo de Respuesta</label>
-                        <input type="text" class="form-control" id="tiempoRespuesta" placeholder="ej.: 1ms"
-                            formControlName="tiempoRespuesta" />
-                    </div>
-                    <div class="form-group mt-4 col-md-6 text-center">
-                        <label for="panel">Panel</label>
-                        <input type="text" class="form-control" id="panel" placeholder="ej.: IPS, TN, LED"
-                            formControlName="panel" />
-                    </div>
-                    <div class="form-group mt-4 col-md-6 text-center">
-                        <label for="panel">Resolucion</label>
-                        <input type="text" class="form-control" id="panel" placeholder="ej.: 1920*1080"
-                            formControlName="resolucion" />
-                    </div>
-                    <div class="form-group mt-4 col-md-6 d-flex justify-content-center align-items-center">
-                        <label>G-Sync?</label>
-                        <input class="form-check-input" style="width: 30px; height: 30px;" type="checkbox" value="" id="flexCheckDefault"
-                            formControlName="gsync"/>
-                    </div>
-                    <div class="form-group mt-4 col-md-6">
-                        <input type="file" class="form-control" aria-label="file example" (change)="onUpload1($event)"
-                            formControlName="foto" />
-                    </div>
-                    <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                        <button type="submit" class="btn btn-success">
-                            Registrar
-                        </button>
-                    </div>
-                </div>
-            </form> -->
-    <div class="flex-container mt-1">
-        <div class="card-item" *ngFor="let item of producto">
-            <div class="card-img">
-                <img [src]=item.image class="card-img-top" alt="{{item.nombre}}">
-            </div>
-            <div class="card-body">
-                <h2 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h2>
-                <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
-                <div class="card-button">
-                    <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" (click)="editarMonitor(item)">
-                        Editar
-                    </button>
-                    <button type="button" class="btn btn-outline-danger">Borrar</button>
+                    glance, a bit more representative of how this would look in a real-world application.
                 </div>
             </div>
         </div>
     </div>
+    <!--  -->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -146,39 +150,46 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row" *ngIf="edit_monitor!=undefined">
                         <div class="form-group mt-4 col-md-6 text-center">
                             <label for="e_nombre">Nombre</label>
-                            <input type="text" class="form-control" id="e_nombre" placeholder="Nombres" [(ngModel)]="edit_monitor.nombre"/>
+                            <input type="text" class="form-control" id="e_nombre" placeholder="Nombres"
+                                [(ngModel)]="edit_monitor.nombre" />
                         </div>
                         <div class="form-group mt-4 col-md-6 text-center">
                             <label for="e_modelo">Modelo</label>
-                            <input type="text" class="form-control" id="e_modelo" placeholder="ej.: VG259QM" [(ngModel)]="edit_monitor.modelo"/>
+                            <input type="text" class="form-control" id="e_modelo" placeholder="ej.: VG259QM"
+                                [(ngModel)]="edit_monitor.modelo" />
                         </div>
                         <div class="form-group mt-4 col-md-6 text-center">
                             <label for="e_tamanio">Tamaño</label>
-                            <input type="text" class="form-control" id="e_tamanio" placeholder="ej.: 15,6' " [(ngModel)]="edit_monitor.tamanio"/>
+                            <input type="text" class="form-control" id="e_tamanio" placeholder="ej.: 15,6' "
+                                [(ngModel)]="edit_monitor.tamanio" />
                         </div>
                         <div class="form-group mt-4 col-md-6 text-center">
                             <label for="e_hertz">Hertz</label>
-                            <input type="text" class="form-control" id="e_hertz" placeholder="ej.: 144Hz" [(ngModel)]="edit_monitor.hertz"/>
+                            <input type="text" class="form-control" id="e_hertz" placeholder="ej.: 144Hz"
+                                [(ngModel)]="edit_monitor.hertz" />
                         </div>
                         <div class="form-group mt-4 col-md-6 text-center">
                             <label for="e_tiempoRespuesta">Tiempo de Respuesta</label>
-                            <input type="text" class="form-control" id="e_tiempoRespuesta" placeholder="ej.: 1ms" [(ngModel)]="edit_monitor.tiempoRespuesta"/>
+                            <input type="text" class="form-control" id="e_tiempoRespuesta" placeholder="ej.: 1ms"
+                                [(ngModel)]="edit_monitor.tiempoRespuesta" />
                         </div>
                         <div class="form-group mt-4 col-md-6 text-center">
                             <label for="e_panel">Panel</label>
-                            <input type="text" class="form-control" id="e_panel" placeholder="ej.: IPS, TN, LED" [(ngModel)]="edit_monitor.panel"/>
+                            <input type="text" class="form-control" id="e_panel" placeholder="ej.: IPS, TN, LED"
+                                [(ngModel)]="edit_monitor.panel" />
                         </div>
                         <div class="form-group mt-4 col-md-6 text-center">
                             <label for="e_panel">Resolucion</label>
-                            <input type="text" class="form-control" id="e_panel" placeholder="ej.: 1920*1080" [(ngModel)]="edit_monitor.resolucion"/>
+                            <input type="text" class="form-control" id="e_panel" placeholder="ej.: 1920*1080"
+                                [(ngModel)]="edit_monitor.resolucion" />
                         </div>
                         <div class="form-group mt-4 col-md-6 d-flex justify-content-center align-items-center">
                             <label>G-Sync?</label>
                             <input class="form-check-input" style="width: 30px; height: 30px;" type="checkbox" value=""
-                                id="flexCheckDefault" [(ngModel)]="edit_monitor.gsync"/>
+                                id="flexCheckDefault" [(ngModel)]="edit_monitor.gsync" />
                         </div>
                     </div>
                 </div>

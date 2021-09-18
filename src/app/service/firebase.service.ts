@@ -109,7 +109,7 @@ export class FirebaseService {
     });
   }
 
-  createProducto(product: any) {
+  createMonitor(product: Monitor) {
     try {
       let ref = this.db.database.ref("/productos/");
       let uid = this.ds.createId();
@@ -118,7 +118,7 @@ export class FirebaseService {
       const task = this.storage.upload(`/${uid}/${product.foto.name}`, product.foto).then(() => {
         storageRef.getDownloadURL().toPromise().then(url => {
           product.foto = url;
-          ref.child(`${uid}`).set(product);
+          ref.child(`${uid}`).set({uid:product.uid,foto:product.foto, nombre:`${product.nombre} ${product.modelo}` ,descripcion:` Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | G-Sync:${product.gsync?'si':'no'} | tiempo Respuesta:${product.tiempoRespuesta} | Panel:${product.panel}`});
         });
       })
     } catch (error) {
@@ -126,16 +126,20 @@ export class FirebaseService {
     }
   }
 
-  updateProducto(product: Monitor) {
+  updateMonitor(product: Monitor) {
     this.userRef.snapshotChanges().subscribe(element=>{
       element.forEach(data=>{
-        /* console.log(data.payload.val())
-        if(data.payload.val().uid=='fjyNyycRuzCAaL9VLRFy'){
+        console.log(data.payload.val())
+        if(data.payload.val().uid==product.uid){
             product.foto=data.payload.val().foto;
-            this.userRef.update("fjyNyycRuzCAaL9VLRFy",product)
-        } */
+            this.userRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}` ,descripcion:` Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | G-Sync:${product.gsync?'si':'no'} | tiempo Respuesta:${product.tiempoRespuesta} | Panel:${product.panel}`})
+        }
       })
     })
+  }
+
+  deleteProduct(product:any){
+    this.userRef.update(product.uid,{alta:true})
   }
 
 }

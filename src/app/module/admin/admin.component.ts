@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Monitor } from 'src/app/class/monitor';
+import { BuscadorService } from 'src/app/service/buscador.service';
 import { FirebaseService } from 'src/app/service/firebase.service';
 
 @Component({
@@ -14,13 +15,16 @@ export class AdminComponent implements OnInit {
   userForm: FormGroup;
   producto:Array<any>=[];
 
+  filterPost='';
+  
   /* editar */
   edit_monitor:Monitor;
 
-  constructor(private authSvc: FirebaseService, private fb: FormBuilder) {
+  constructor(private authSvc: FirebaseService, private fb: FormBuilder,private data:BuscadorService) {
     this.initFormEspecialista();
     this.producto = authSvc.getAllProducts()
   }
+  
 
   private initFormEspecialista(): void {
     this.userForm = this.fb.group({
@@ -50,7 +54,7 @@ export class AdminComponent implements OnInit {
       this.userForm.value.gsync,
     );
     
-    this.authSvc.updateProducto(monitor)
+    this.authSvc.createMonitor(monitor)
   }
 
   ngOnInit(): void {
@@ -66,11 +70,11 @@ export class AdminComponent implements OnInit {
 
   editarMonitor(item:Monitor){
     this.edit_monitor=new Monitor('',item.nombre,item.modelo,'',item.tamanio,item.hertz,item.tiempoRespuesta,item.panel,item.resolucion,item.gsync);
-    this.authSvc.updateProducto(this.edit_monitor);
   }
 
   updateMonitor(){
-
+    console.log(this.edit_monitor)
+    this.authSvc.updateMonitor(this.edit_monitor);
   }
 
 }
