@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { CheckLoginGuard } from './guards/check-login.guard';
 
 const routes: Routes = [
   {
@@ -11,8 +10,10 @@ const routes: Routes = [
     path: 'login', loadChildren: () => import('./module/login/login.module').then(m => m.LoginModule)
   },
   { 
-    path: 'admin', loadChildren: () => import('./module/admin/admin.module').then(m => m.AdminModule) 
-  }
+    path: 'admin', loadChildren: () => import('./module/admin/admin.module').then(m => m.AdminModule)
+  },
+  {path: '**', redirectTo: '' }
+
 ];
 
 @NgModule({

@@ -10,10 +10,10 @@ import { FirebaseService } from 'src/app/service/firebase.service';
   styleUrls: ['./alta-monitor.component.scss']
 })
 export class AltaMonitorComponent implements OnInit {
-
+  flag=false;
   productForm: FormGroup;
   foto1: File;
-  constructor(private authSrv:FirebaseService, private fb: FormBuilder) { 
+  constructor(private authSrv: FirebaseService, private fb: FormBuilder) {
     this.initFormEspecialista();
   }
 
@@ -34,8 +34,9 @@ export class AltaMonitorComponent implements OnInit {
       foto: ['', Validators.required],
     });
   }
-  
+
   async onRegister() {
+    this.flag=true;
     let monitor: Monitor = new Monitor(
       '100',
       this.productForm.value.nombre,
@@ -50,8 +51,15 @@ export class AltaMonitorComponent implements OnInit {
       this.productForm.value.freesync,
       eTipo.Monitor,
     );
-    
-    this.authSrv.createMonitor(monitor)
+
+    if ( await this.authSrv.createMonitor(monitor)) { 
+      this.flag=false;
+      this.productForm.reset();
+      this.authSrv.alert('success', "Monitor Creada Correctamente"); 
+    }else{
+      this.authSrv.alert('error',"Error!");
+    }
+
   }
 
   onUpload1($event) {

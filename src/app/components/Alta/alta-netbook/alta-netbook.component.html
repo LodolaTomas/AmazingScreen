@@ -69,8 +69,8 @@
             <input type="file" class="form-control" aria-label="file example"
                 (change)="onUpload1($event)" formControlName="foto" />
         </div>
-        <div class="d-grid gap-2 col-6 mx-auto mt-4">
-            <button type="submit" class="btn btn-success">
+        <div class="d-grid gap-2 col-6 mx-auto mt-4" >
+            <button type="submit" class="btn btn-success" [disabled]=flag>
                 Registrar
             </button>
         </div>

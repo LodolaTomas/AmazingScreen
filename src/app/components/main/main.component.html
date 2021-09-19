@@ -70,7 +70,7 @@
             <article class="flex-container mt-1" *ngIf="(cosas | search:message) as producto">
                 <div class="card-item" *ngFor="let item of producto">
                     <div class="card-img">
-                        <img [src]=item.image class="card-img-top" alt="{{item.nombre}}">
+                        <img [src]=item.foto class="card-img-top" alt="{{item.nombre}}">
                     </div>
                     <div class="card-body">
                         <h1 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h1>

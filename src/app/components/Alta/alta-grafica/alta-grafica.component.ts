@@ -11,6 +11,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 })
 export class AltaplacadeVideoComponent implements OnInit {
 
+  flag=false;
   productForm: FormGroup;
   foto1: File;
   constructor(private authSrv:FirebaseService, private fb: FormBuilder) { 
@@ -30,6 +31,7 @@ export class AltaplacadeVideoComponent implements OnInit {
   }
   
   async onRegister() {
+    this.flag=true;
     let placaVideo: PlacaVideo = new PlacaVideo(
       '',
       this.productForm.value.nombre,
@@ -39,7 +41,13 @@ export class AltaplacadeVideoComponent implements OnInit {
       this.productForm.value.ram,
     );
     
-    this.authSrv.createPlacaVideo(placaVideo)
+    if ( await this.authSrv.createPlacaVideo(placaVideo)) { 
+      this.flag=false;
+      this.productForm.reset();
+      this.authSrv.alert('success', "Placa de Video Creada Correctamente"); 
+    }else{
+      this.authSrv.alert('error',"Error!");
+    }
   }
 
   onUpload1($event) {

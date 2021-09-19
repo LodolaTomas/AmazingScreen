@@ -10,6 +10,7 @@ export class MainComponent implements OnInit {
   cosas:Array<any>=[];
   message:string='';
   constructor(public search:BuscadorService,private firebaseSrv:FirebaseService) {
+    this.cosas.splice(0,this.cosas.length)
     this.cosas= firebaseSrv.getAllProducts();
   }
   ngOnInit(): void {

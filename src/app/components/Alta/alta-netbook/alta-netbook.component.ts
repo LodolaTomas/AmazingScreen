@@ -10,7 +10,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
   styleUrls: ['./alta-netbook.component.scss']
 })
 export class AltaNetbookComponent implements OnInit {
-
+  flag=false;
   productForm: FormGroup;
   foto1: File;
   constructor(private authSrv:FirebaseService, private fb: FormBuilder) { 
@@ -40,7 +40,8 @@ export class AltaNetbookComponent implements OnInit {
   }
   
   async onRegister() {
-    let monitor: Notebook = new Notebook(
+    this.flag=true;
+    let netbook: Notebook = new Notebook(
       '',
       this.productForm.value.nombre,
       this.productForm.value.modelo,
@@ -55,11 +56,17 @@ export class AltaNetbookComponent implements OnInit {
       eTipo.Notebook,
       this.productForm.value.procesador,
       this.productForm.value.placadeVideo,
-      this.productForm.value.capacidad,
       this.productForm.value.ram,
+      this.productForm.value.capacidad,
     );
     
-    this.authSrv.createMonitor(monitor)
+    if ( await this.authSrv.createNetbook(netbook)) { 
+      this.flag=false;
+      this.productForm.reset();
+      this.authSrv.alert('success', "Netbook Creada Correctamente"); 
+    }else{
+      this.authSrv.alert('error',"Error!");
+    }
   }
 
   onUpload1($event) {

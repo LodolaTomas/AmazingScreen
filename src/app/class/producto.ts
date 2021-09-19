@@ -9,6 +9,7 @@ export class producto{
         this.nombre=nombre;
         this.modelo=modelo;
         this.foto=foto;
+        this.tipo=tipo;
     }
 }
 export enum eTipo {

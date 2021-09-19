@@ -55,19 +55,17 @@
                     </div>
                     <div class="card-item" *ngFor="let item of producto | search:filterPost">
                         <div class="card-img">
-                            <img [src]=item.image class="card-img-top" alt="{{item.nombre}}">
+                            <img [src]=item.foto class="card-img-top" alt="{{item.nombre}}">
                         </div>
                         <div class="card-body">
                             <h2 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h2>
                             <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
-                            <div class="card-button">
                                 <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal" (click)="editarMonitor(item)">
                                     Editar
                                 </button>
                                 <button type="button" class="btn btn-outline-danger"
                                     (click)="deleteMonitor(item)">Borrar</button>
-                            </div>
                         </div>
                     </div>
                 </div>
