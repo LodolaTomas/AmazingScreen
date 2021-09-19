@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/service/firebase.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -6,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  garantia:any;
+  politicas:any;
+  quienesSomos:any;
+  terminos:any;
+  info:Array<string>=[];
+  constructor(private firebaseSrv:FirebaseService) {
+    this.info=firebaseSrv.getInfo();
+   }
 
   ngOnInit(): void {
   }

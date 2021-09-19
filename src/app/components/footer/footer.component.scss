@@ -1,6 +1,7 @@
 footer {
   color: #bbbbbb;
   background: #262626;
+  border-radius: 5px;
   .informacion {
     display: flex;
     flex-wrap: wrap;
@@ -23,22 +24,25 @@ footer {
         flex-grow: 1;
         flex-basis: 15rem;
         font-size: 1rem;
-        margin:.5rem;
+        margin:.25rem;
       }
     }
-
+    .info{
+      text-decoration: none;
+      cursor: pointer;
+      color: #3A5675;
+      transition: color .3s;
+    }
+    .info:hover{
+      color: #00A9DE;
+    }
   }
-  p{
-    text-decoration: none;
-    cursor: pointer;
-    color: #3A5675;
-    transition: color .3s;
+  .modal-body{
+    color: #262626;
   }
-  p:hover{
-    color: #00A9DE;
-  }
+  
   .copyright {
-    margin-top: 1rem;
+    margin-top: .5rem;
     text-align: center;
   }
 }

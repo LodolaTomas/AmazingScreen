@@ -18,14 +18,16 @@ export class FirebaseService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
   uploadPercent: Observable<any>;
-  userRef: AngularFireList<any> = null;
+  productRef: AngularFireList<any> = null;
+  footerRef: AngularFireList<any> = null;
   myAdmin: any;
+  footer:Array<any>=[];
   arrayProducts:Array<any>=[];
   constructor(private router: Router, public fireAuth: AngularFireAuth, private storage: AngularFireStorage,
     private db: AngularFireDatabase, private ds: AngularFirestore, private authAF: AngularFireAuth) {
 
-    this.userRef = this.db.list('/productos');
-    this.userRef.snapshotChanges().subscribe(data=>{
+    this.productRef = this.db.list('/productos');
+    this.productRef.snapshotChanges().subscribe(data=>{
       this.arrayProducts.splice(0,this.arrayProducts.length);
       data.forEach(element=>{
         if(element.payload.val().alta==true){
@@ -33,6 +35,16 @@ export class FirebaseService {
         }
       })
     })
+  }
+
+  getInfo(){
+    this.footerRef= this.db.list('/footer');
+    this.footerRef.snapshotChanges().subscribe(data=>{
+      data.forEach(element=>{
+        this.footer.push(element.payload.val())
+      })
+    })
+    return this.footer
   }
 
   GetCurrentUser() {
@@ -45,7 +57,7 @@ export class FirebaseService {
 
   async getUser() {
     let respon = await new Promise(resolve => {
-      this.userRef.snapshotChanges().subscribe(data => {
+      this.productRef.snapshotChanges().subscribe(data => {
         resolve(data[0].key);
       });
     })
@@ -137,12 +149,12 @@ export class FirebaseService {
 
   updateMonitor(product: Monitor):Promise<boolean>{
     return new Promise(resolve=>{
-      this.userRef.snapshotChanges().subscribe(element=>{
+      this.productRef.snapshotChanges().subscribe(element=>{
         element.forEach(data=>{
           console.log(data.payload.val())
           if(data.payload.val().uid==product.uid){
               product.foto=data.payload.val().foto;
-              this.userRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
+              this.productRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
               descripcion:` Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | G-Sync:${product.gsync?'si':'no'} | FreeSync:${product.freeSync?'si':'no'} | tiempo Respuesta:${product.tiempoRespuesta} | Panel:${product.panel}`})
             resolve(true);
           }
@@ -175,12 +187,12 @@ export class FirebaseService {
 
   updateNetbook(product: Notebook):Promise<boolean>{
     return new Promise(resolve=>{
-      this.userRef.snapshotChanges().subscribe(element=>{
+      this.productRef.snapshotChanges().subscribe(element=>{
         element.forEach(data=>{
           console.log(data.payload.val())
           if(data.payload.val().uid==product.uid){
               product.foto=data.payload.val().foto;
-              this.userRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
+              this.productRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
               descripcion:`Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | Procesador: ${product.procesador} | Placa de video:${product.placadeVideo} | RAM:${product.RAM} | Capacidad:${product.capacidad} | Panel:${product.panel} | tiempo Respuesta:${product.tiempoRespuesta}`})
             resolve(true)
           }
@@ -212,12 +224,12 @@ export class FirebaseService {
 
   updatePlacaVideo(product: PlacaVideo):Promise<boolean> {
     return new Promise(resolve=>{
-      this.userRef.snapshotChanges().subscribe(element=>{
+      this.productRef.snapshotChanges().subscribe(element=>{
         element.forEach(data=>{
           console.log(data.payload.val())
           if(data.payload.val().uid==product.uid){
               product.foto=data.payload.val().foto;
-              this.userRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
+              this.productRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
               descripcion:`RAM:${product.RAM}`});
               resolve(true)
           }
@@ -227,7 +239,7 @@ export class FirebaseService {
   }
 
   deleteProduct(product:any){
-    this.userRef.update(product.uid,{alta:false})
+    this.productRef.update(product.uid,{alta:false})
   }
 
 }
