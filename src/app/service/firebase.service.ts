@@ -21,29 +21,27 @@ export class FirebaseService {
   productRef: AngularFireList<any> = null;
   footerRef: AngularFireList<any> = null;
   myAdmin: any;
-  footer:Array<any>=[];
-  arrayProducts:Array<any>=[];
+  footer: Array<any> = [];
+  arrayProducts: Array<any> = [];
   constructor(private router: Router, public fireAuth: AngularFireAuth, private storage: AngularFireStorage,
     private db: AngularFireDatabase, private ds: AngularFirestore, private authAF: AngularFireAuth) {
 
     this.productRef = this.db.list('/productos');
-    this.productRef.snapshotChanges().subscribe(data=>{
-      this.arrayProducts.splice(0,this.arrayProducts.length);
-      data.forEach(element=>{
-        if(element.payload.val().alta==true){
-          this.arrayProducts.push(element.payload.val())
-        }
+    this.productRef.snapshotChanges().subscribe(data => {
+      this.arrayProducts.splice(0, this.arrayProducts.length);
+      data.forEach(element => {
+        this.arrayProducts.push(element.payload.val())
+      })
+    })
+    this.footerRef = this.db.list('/footer');
+    this.footerRef.snapshotChanges().subscribe(data => {
+      data.forEach(element => {
+        this.footer.push(element.payload.val())
       })
     })
   }
 
-  getInfo(){
-    this.footerRef= this.db.list('/footer');
-    this.footerRef.snapshotChanges().subscribe(data=>{
-      data.forEach(element=>{
-        this.footer.push(element.payload.val())
-      })
-    })
+  getInfo() {
     return this.footer
   }
 
@@ -126,8 +124,8 @@ export class FirebaseService {
     });
   }
 
-  createMonitor(product: Monitor):Promise<boolean>{
-    return new Promise(resolve=>{
+  createMonitor(product: Monitor): Promise<boolean> {
+    return new Promise(resolve => {
       try {
         let ref = this.db.database.ref("/productos/");
         let uid = this.ds.createId();
@@ -136,8 +134,10 @@ export class FirebaseService {
         const task = this.storage.upload(`/${product.foto.name}${product.modelo}`, product.foto).then(() => {
           storageRef.getDownloadURL().toPromise().then(url => {
             product.foto = url;
-            ref.child(`${uid}`).set({"uid":product.uid,"foto":product.foto, "nombre":`${product.nombre} ${product.modelo}`, "alta":true, "tipo":product.tipo,
-            "descripcion":` Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | G-Sync:${product.gsync?'si':'no'} | tiempo Respuesta:${product.tiempoRespuesta} | Panel:${product.panel}`});
+            ref.child(`${uid}`).set({
+              "uid": product.uid, "foto": product.foto, "nombre": `${product.nombre} ${product.modelo}`, "alta": true, "tipo": product.tipo,
+              "descripcion": ` Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion}  ${product.gsync ? '| G-Sync |' : '|'}  tiempo Respuesta:${product.tiempoRespuesta} | Panel:${product.panel}`
+            });
             resolve(true)
           });
         })
@@ -147,15 +147,16 @@ export class FirebaseService {
     })
   }
 
-  updateMonitor(product: Monitor):Promise<boolean>{
-    return new Promise(resolve=>{
-      this.productRef.snapshotChanges().subscribe(element=>{
-        element.forEach(data=>{
-          console.log(data.payload.val())
-          if(data.payload.val().uid==product.uid){
-              product.foto=data.payload.val().foto;
-              this.productRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
-              descripcion:` Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | G-Sync:${product.gsync?'si':'no'} | FreeSync:${product.freeSync?'si':'no'} | tiempo Respuesta:${product.tiempoRespuesta} | Panel:${product.panel}`})
+  updateMonitor(product: any): Promise<boolean> {
+    return new Promise(resolve => {
+      this.productRef.snapshotChanges().subscribe(element => {
+        element.forEach(data => {
+          if (data.payload.val().uid == product.uid) {
+            product.foto = data.payload.val().foto;
+            this.productRef.update(product.uid, {
+              alta: true, nombre: `${product.nombre}`, tipo: product.tipo,
+              descripcion: product.descripcion
+            })
             resolve(true);
           }
         })
@@ -163,8 +164,13 @@ export class FirebaseService {
     })
   }
 
-  createNetbook(product: Notebook):Promise<boolean>{
-    return new Promise(resolve=>{
+  updateInfo(key: string, cambio: any) {
+    let ref = this.db.database.ref(`/footer`);
+    ref.child(key).set(cambio);
+  }
+
+  createNetbook(product: Notebook): Promise<boolean> {
+    return new Promise(resolve => {
       try {
         let ref = this.db.database.ref("/productos/");
         let uid = this.ds.createId();
@@ -173,8 +179,10 @@ export class FirebaseService {
         const task = this.storage.upload(`/${uid}/${product.foto.name}`, product.foto).then(() => {
           storageRef.getDownloadURL().toPromise().then(url => {
             product.foto = url;
-            ref.child(`${uid}`).set({uid:product.uid,foto:product.foto, nombre:`${product.nombre} ${product.modelo}`, alta:true, tipo:product.tipo,
-            descripcion:`Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | Procesador: ${product.procesador} | Placa de video:${product.placadeVideo} | RAM:${product.RAM} | Capacidad:${product.capacidad} | Panel:${product.panel} | tiempo Respuesta:${product.tiempoRespuesta}`});
+            ref.child(`${uid}`).set({
+              uid: product.uid, foto: product.foto, nombre: `${product.nombre} ${product.modelo}`, alta: true, tipo: product.tipo,
+              descripcion: `Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | Procesador: ${product.procesador} | Placa de video:${product.placadeVideo} | RAM:${product.RAM} | Capacidad:${product.capacidad} | Panel:${product.panel} | tiempo Respuesta:${product.tiempoRespuesta}`
+            });
             resolve(true)
           });
         })
@@ -182,18 +190,20 @@ export class FirebaseService {
         console.log(error)
       }
     })
-    
+
   }
 
-  updateNetbook(product: Notebook):Promise<boolean>{
-    return new Promise(resolve=>{
-      this.productRef.snapshotChanges().subscribe(element=>{
-        element.forEach(data=>{
+  updateNetbook(product: any): Promise<boolean> {
+    return new Promise(resolve => {
+      this.productRef.snapshotChanges().subscribe(element => {
+        element.forEach(data => {
           console.log(data.payload.val())
-          if(data.payload.val().uid==product.uid){
-              product.foto=data.payload.val().foto;
-              this.productRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
-              descripcion:`Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion} | Procesador: ${product.procesador} | Placa de video:${product.placadeVideo} | RAM:${product.RAM} | Capacidad:${product.capacidad} | Panel:${product.panel} | tiempo Respuesta:${product.tiempoRespuesta}`})
+          if (data.payload.val().uid == product.uid) {
+            product.foto = data.payload.val().foto;
+            this.productRef.update(product.uid, {
+              alta: true, nombre: `${product.nombre}`, tipo: product.tipo,
+              descripcion: product.descripcion
+            })
             resolve(true)
           }
         })
@@ -201,8 +211,8 @@ export class FirebaseService {
     })
   }
 
-  createPlacaVideo(product: PlacaVideo):Promise<boolean>{
-    return new Promise(resolve=>{
+  createPlacaVideo(product: PlacaVideo): Promise<boolean> {
+    return new Promise(resolve => {
       try {
         let ref = this.db.database.ref("/productos/");
         let uid = this.ds.createId();
@@ -211,8 +221,10 @@ export class FirebaseService {
         const task = this.storage.upload(`/${uid}/${product.foto.name}`, product.foto).then(() => {
           storageRef.getDownloadURL().toPromise().then(url => {
             product.foto = url;
-            ref.child(`${uid}`).set({uid:product.uid,foto:product.foto, nombre:`${product.nombre} ${product.modelo}`, alta:true, tipo:product.tipo,
-            descripcion:`RAM:${product.RAM}`});
+            ref.child(`${uid}`).set({
+              uid: product.uid, foto: product.foto, nombre: `${product.nombre} ${product.modelo}`, alta: true, tipo: product.tipo,
+              descripcion: `RAM:${product.RAM}`
+            });
             resolve(true);
           });
         })
@@ -222,24 +234,26 @@ export class FirebaseService {
     })
   }
 
-  updatePlacaVideo(product: PlacaVideo):Promise<boolean> {
-    return new Promise(resolve=>{
-      this.productRef.snapshotChanges().subscribe(element=>{
-        element.forEach(data=>{
+  updatePlacaVideo(product: any): Promise<boolean> {
+    return new Promise(resolve => {
+      this.productRef.snapshotChanges().subscribe(element => {
+        element.forEach(data => {
           console.log(data.payload.val())
-          if(data.payload.val().uid==product.uid){
-              product.foto=data.payload.val().foto;
-              this.productRef.update(product.uid,{alta:true,nombre:`${product.nombre} ${product.modelo}`, tipo:product.tipo,
-              descripcion:`RAM:${product.RAM}`});
-              resolve(true)
+          if (data.payload.val().uid == product.uid) {
+            product.foto = data.payload.val().foto;
+            this.productRef.update(product.uid, {
+              alta: true, nombre: `${product.nombre}`, tipo: product.tipo,
+              descripcion: product.descripcion
+            });
+            resolve(true)
           }
         })
       })
     })
   }
 
-  deleteProduct(product:any){
-    this.productRef.update(product.uid,{alta:false})
+  deleteProduct(product: any) {
+    this.productRef.update(product.uid, { alta: false })
   }
 
 }

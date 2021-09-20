@@ -14,10 +14,16 @@ export class AdminComponent implements OnInit {
   producto:Array<any>=[];
   filterPost='';
   /* editar */
-  edit_monitor:Monitor;
+  edit_monitor:any;
+  info:Array<any>=[];
 
+  garantia:string;
+  privacidad:string;
+  quienesSomos:string;
+  terminosCondiciones:string
   constructor(private authSvc: FirebaseService) {
-    this.producto = authSvc.getAllProducts()
+    this.producto = authSvc.getAllProducts();
+    this.info=authSvc.getInfo();
   }
   
   ngOnInit(): void {
@@ -27,8 +33,8 @@ export class AdminComponent implements OnInit {
     this.authSvc.logout()
   }
 
-  editarMonitor(item:Monitor){
-    this.edit_monitor=new Monitor('',item.nombre,item.modelo,'',item.tamanio,item.hertz,item.tiempoRespuesta,item.panel,item.resolucion,item.gsync,item.freeSync,item.tipo);
+  editarMonitor(item:any){
+    this.edit_monitor=item;
   }
 
   updateMonitor(){
@@ -39,4 +45,7 @@ export class AdminComponent implements OnInit {
     this.authSvc.deleteProduct(item)
   }
 
+  updateInfo(key:string,cambio:any){
+    this.authSvc.updateInfo(key,cambio);
+  }
 }

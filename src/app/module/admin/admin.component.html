@@ -21,18 +21,42 @@
     </div>
 </nav>
 
-<main class="main mt-4">
+<main class="main mt-4 container-lg">
     <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    Agregar Producto
+                    Agregar Monitor
                 </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionFlushExample">
-                    <app-alta-netbook></app-alta-netbook>
+                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
+                <app-alta-monitor class="m-2"></app-alta-monitor>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Agregar Netbook
+                </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
+                <app-alta-netbook class="m-2"></app-alta-netbook>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                    Agregar Tarjeta Grafica
+                </button>
+            </h2>
+            <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
+                <app-alta-placadeVideo class="m-2"></app-alta-placadeVideo>
             </div>
         </div>
         <div class="accordion-item">
@@ -43,7 +67,7 @@
                 </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                data-bs-parent="#accordionFlushExample">
+                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
                 <div class="flex-container mt-1">
                     <div class="buscador mt-2" style="width: 100%;">
                         <form class="navbar__search me-auto">
@@ -60,12 +84,12 @@
                         <div class="card-body">
                             <h2 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h2>
                             <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
-                                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" (click)="editarMonitor(item)">
-                                    Editar
-                                </button>
-                                <button type="button" class="btn btn-outline-danger"
-                                    (click)="deleteMonitor(item)">Borrar</button>
+                            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="editarMonitor(item)">
+                                Editar
+                            </button>
+                            <button type="button" class="btn btn-outline-danger"
+                                (click)="deleteMonitor(item)">Borrar</button>
                         </div>
                     </div>
                 </div>
@@ -75,15 +99,113 @@
             <h2 class="accordion-header" id="flush-headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                    Editar Adicionales
+                    Editar Info
                 </button>
             </h2>
             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
                 data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
-                    <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting
-                    happening here in terms of content, but just filling up the space to make it look, at least at first
-                    glance, a bit more representative of how this would look in a real-world application.
+                <div class="accordion-body">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#QuienesSomos">
+                        Quienes Somos?
+                    </button>
+                    <div class="modal fade" id="QuienesSomos" tabindex="-1" aria-labelledby="QuienesSomosLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Quienes Somos?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                    <div class="form-floating">
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[2]"></textarea>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" (click)="updateInfo('quienesSomos',info[2])">Guardar Cambios</button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#terminosycondiciones">
+                        Terminos y condiciones
+                    </button>
+                    <div class="modal fade" id="terminosycondiciones" tabindex="-1"
+                        aria-labelledby="terminosycondicionesLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Terminos y Condiciones</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-floating">
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[3]"></textarea>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" (click)="updateInfo('terminos y condiciones',info[3])">Guardar Cambios</button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#PoliticaGarantias">
+                        Politica de Garantias
+                    </button>
+                    <div class="modal fade" id="PoliticaGarantias" tabindex="-1"
+                        aria-labelledby="PoliticaGarantiasLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Politica de Garantias</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-floating">
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[0]"></textarea>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" (click)="updateInfo('garantia',info[0])">Guardar Cambios</button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#PoliticaPrivacidad">
+                        Politica de Privacidad
+                    </button>
+                    <div class="modal fade" id="PoliticaPrivacidad" tabindex="-1"
+                        aria-labelledby="PoliticaPrivacidadLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Politica de Privacidad</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-floating">
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[1]"></textarea>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" (click)="updateInfo('privacidad',info[1])">Guardar Cambios</button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,39 +227,15 @@
                                 [(ngModel)]="edit_monitor.nombre" />
                         </div>
                         <div class="form-group mt-4 col-md-6 text-center">
-                            <label for="e_modelo">Modelo</label>
-                            <input type="text" class="form-control" id="e_modelo" placeholder="ej.: VG259QM"
-                                [(ngModel)]="edit_monitor.modelo" />
+                            <label for="e_modelo">Descripcion</label>
+                            <input type="text" class="form-control" id="e_modelo" placeholder="descripcion"
+                                [(ngModel)]="edit_monitor.descripcion" />
                         </div>
-                        <div class="form-group mt-4 col-md-6 text-center">
-                            <label for="e_tamanio">Tamaño</label>
-                            <input type="text" class="form-control" id="e_tamanio" placeholder="ej.: 15,6' "
-                                [(ngModel)]="edit_monitor.tamanio" />
-                        </div>
-                        <div class="form-group mt-4 col-md-6 text-center">
-                            <label for="e_hertz">Hertz</label>
-                            <input type="text" class="form-control" id="e_hertz" placeholder="ej.: 144Hz"
-                                [(ngModel)]="edit_monitor.hertz" />
-                        </div>
-                        <div class="form-group mt-4 col-md-6 text-center">
-                            <label for="e_tiempoRespuesta">Tiempo de Respuesta</label>
-                            <input type="text" class="form-control" id="e_tiempoRespuesta" placeholder="ej.: 1ms"
-                                [(ngModel)]="edit_monitor.tiempoRespuesta" />
-                        </div>
-                        <div class="form-group mt-4 col-md-6 text-center">
-                            <label for="e_panel">Panel</label>
-                            <input type="text" class="form-control" id="e_panel" placeholder="ej.: IPS, TN, LED"
-                                [(ngModel)]="edit_monitor.panel" />
-                        </div>
-                        <div class="form-group mt-4 col-md-6 text-center">
-                            <label for="e_panel">Resolucion</label>
-                            <input type="text" class="form-control" id="e_panel" placeholder="ej.: 1920*1080"
-                                [(ngModel)]="edit_monitor.resolucion" />
-                        </div>
+                        
                         <div class="form-group mt-4 col-md-6 d-flex justify-content-center align-items-center">
-                            <label>G-Sync?</label>
+                            <label>ALTA</label>
                             <input class="form-check-input" style="width: 30px; height: 30px;" type="checkbox" value=""
-                                id="flexCheckDefault" [(ngModel)]="edit_monitor.gsync" />
+                                id="flexCheckDefault" [(ngModel)]="edit_monitor.alta" />
                         </div>
                     </div>
                 </div>

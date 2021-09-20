@@ -69,20 +69,22 @@
             </div>
             <article class="flex-container mt-1" *ngIf="(cosas | search:message) as producto">
                 <div class="card-item" *ngFor="let item of producto">
-                    <div class="card-img">
-                        <img [src]=item.foto class="card-img-top" alt="{{item.nombre}}">
-                    </div>
-                    <div class="card-body">
-                        <h1 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h1>
-                        <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
-                        <div class="card-button">
-                            <a rel="nofollow noopener noreferrer" target="_blank"
-                                href="https://api.whatsapp.com/send?text=Hola, tenes stock de la {{item.nombre}}.&amp;phone=5491127262156"
-                                class="btn btn-primary">Consultar Stock</a>
+                    <div *ngIf="item.alta">
+                        <div class="card-img">
+                            <img [src]=item.foto class="card-img-top" alt="{{item.nombre}}">
+                        </div>
+                        <div class="card-body">
+                            <h1 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h1>
+                            <h2 class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</h2>
+                            <div class="card-button">
+                                <a rel="nofollow noopener noreferrer" target="_blank"
+                                    href="https://api.whatsapp.com/send?text=Hola, tenes stock de la {{item.nombre}}.&amp;phone=5491127262156"
+                                    class="btn btn-primary">Consultar Stock</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div *ngIf="producto.length===0" style="margin: auto; position: relative; bottom: -30px;">
+                <div *ngIf="producto.length===0" style="margin: auto; position: relative;">
                     <h1>Not Found</h1>
                 </div>
             </article>
