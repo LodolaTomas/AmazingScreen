@@ -91,6 +91,9 @@ export class FirebaseService {
         }
         return false
       });
+      /* this.fireAuth.createUserWithEmailAndPassword(correo,password).then((userCredential)=>{
+        return true;
+      }); */
   }
 
   logout(): void {
