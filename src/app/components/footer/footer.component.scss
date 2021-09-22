@@ -6,7 +6,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 1;
-    .image{
+    .image {
       max-width: 15rem;
       margin: auto;
       .footer_img {
@@ -20,29 +20,35 @@ footer {
       flex-wrap: wrap;
       margin: auto;
       flex-direction: row;
-      li{
+      li {
         flex-grow: 1;
         flex-basis: 15rem;
         font-size: 1rem;
-        margin:.25rem;
+        margin: 0.25rem;
       }
     }
-    .info{
+    .info {
       text-decoration: none;
       cursor: pointer;
-      color: #3A5675;
-      transition: color .3s;
+      color: #3a5675;
+      transition: color 0.3s;
     }
-    .info:hover{
-      color: #00A9DE;
+    .info:hover {
+      color: #00a9de;
     }
   }
-  .modal-body{
+  .modal-body {
     color: #262626;
   }
-  
+
   .copyright {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     text-align: center;
+  }
+
+  .map {
+    border: 0;
+    width: 100%;
+    height: 450px;
   }
 }
