@@ -63,7 +63,7 @@ export class MainComponent implements OnInit {
   }
 
   setFiltroTG(){
-    this.filtro=eTipo.placadeVideo;
+    this.filtro=eTipo.PlacadeVideo;
   }
 
   setFiltroProcesador(){
@@ -71,6 +71,6 @@ export class MainComponent implements OnInit {
   }
 
   setFiltroPerifericos(){
-    this.filtro=eTipo.Perifericos;
+    this.filtro=eTipo.Periferico;
   }
 }

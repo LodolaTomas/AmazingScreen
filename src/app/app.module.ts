@@ -18,6 +18,7 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
 import { AngularFireModule } from '@angular/fire';
 import { AdminModule } from './module/admin/admin.module';
 import { FilterPipe } from './pipe/filter.pipe';
+import { AltaGenComponent } from './components/Alta/alta-gen/alta-gen.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FilterPipe } from './pipe/filter.pipe';
     FooterComponent,
     CarruselComponent,
     SliderComponent,
-    FilterPipe
+    FilterPipe,
+    AltaGenComponent
   ],
   imports: [
     BrowserModule,

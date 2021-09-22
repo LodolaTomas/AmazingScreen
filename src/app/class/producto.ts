@@ -15,8 +15,12 @@ export class producto{
 export enum eTipo {
     Notebook,
     Monitor,
-    placadeVideo,
+    PlacadeVideo,
     Processador,
     All,
-    Perifericos
+    Periferico,
+    MemoriaRAM,
+    MotherBoard,
+    Fuente,
+    Almacenamiento
   }

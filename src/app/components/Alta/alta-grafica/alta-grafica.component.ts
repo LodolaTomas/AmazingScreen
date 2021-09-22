@@ -37,7 +37,7 @@ export class AltaplacadeVideoComponent implements OnInit {
       this.productForm.value.nombre,
       this.productForm.value.modelo,
       this.foto1,
-      eTipo.placadeVideo,
+      eTipo.PlacadeVideo,
       this.productForm.value.ram,
     );
     
