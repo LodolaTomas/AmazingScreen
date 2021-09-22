@@ -7,12 +7,12 @@ import { BuscadorService } from 'src/app/service/buscador.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private data:BuscadorService) { }
+  constructor(/* private data:BuscadorService */) { }
 
   ngOnInit(): void {
-  }
+  }/* 
   @HostListener("input", ["$event.target.value"])
   onInput(value:any) {
     this.data.changeMessage(value);
-  }
+  } */
 }

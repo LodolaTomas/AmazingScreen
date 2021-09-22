@@ -17,4 +17,6 @@ export enum eTipo {
     Monitor,
     placadeVideo,
     Processador,
+    All,
+    Perifericos
   }

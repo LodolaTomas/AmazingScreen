@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { eTipo } from '../class/producto';
 
 @Pipe({
   name: 'filter'
@@ -6,12 +7,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
+    if (arg === eTipo.All) return value
     const resultPost=[];
-    for (const especialista of value) {
-      for (const especialidades of especialista.especialidad) {
-        if(especialidades.toLowerCase().indexOf(arg.toLowerCase())>-1){
-          resultPost.push(especialista)
-        }
+    for (const producto of value) {
+      if(producto.tipo===arg){
+        resultPost.push(producto)
       }
     }
     return resultPost

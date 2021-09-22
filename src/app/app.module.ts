@@ -10,8 +10,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CarruselComponent } from './page/carrusel/carrusel.component';
 import { SliderComponent } from './page/slider/slider.component';
 
-import { FilterPipe } from './pipe/filter.pipe';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,6 +17,7 @@ import { environment } from 'src/environments/environment.prod';
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import { AngularFireModule } from '@angular/fire';
 import { AdminModule } from './module/admin/admin.module';
+import { FilterPipe } from './pipe/filter.pipe';
 
 
 @NgModule({
@@ -30,7 +29,7 @@ import { AdminModule } from './module/admin/admin.module';
     FooterComponent,
     CarruselComponent,
     SliderComponent,
-    FilterPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -133,8 +133,8 @@ export class FirebaseService {
         let ref = this.db.database.ref("/productos/");
         let uid = this.ds.createId();
         product.uid = uid;
-        let storageRef = this.storage.ref(`/${product.foto.name}${product.modelo}`);
-        const task = this.storage.upload(`/${product.foto.name}${product.modelo}`, product.foto).then(() => {
+        let storageRef = this.storage.ref(`/${product.foto.name}`);
+        const task = this.storage.upload(`/${product.foto.name}`, product.foto).then(() => {
           storageRef.getDownloadURL().toPromise().then(url => {
             product.foto = url;
             ref.child(`${uid}`).set({
