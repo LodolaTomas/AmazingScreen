@@ -1,7 +1,7 @@
 <div class="container-xl">
     <app-carrusel></app-carrusel>
     <div class="flex">
-        <aside class="aside mt-1 sidebar" style="background-color: #3A5675; border-radius: 5px;padding: .25rem;">
+        <aside class="aside mt-1 sidebar" >
             <div id="leftside-navigation" class="nano">
                 <ul class="nano-content">
                     <li>
@@ -262,8 +262,8 @@
             </div>
         </aside>
 
-        <main class="main mt-1" style="background-color: #082032; color: #f2f2f2f2; border-radius: 5px;">
-            <div class="form-search" aria-label="breadcrumb" style="display: flex; padding: 1rem; ">
+        <main class="main mt-1" >
+            <div class="form-search" aria-label="breadcrumb" >
                 <input class="form-control me-1" type="search" placeholder="Buscar" aria-label="Search"
                     [(ngModel)]="message" id="search">
                 <label for="search" class="btn btn-outline-primary" name="button" disabled><i class="fa fa-search" aria-hidden="true"></i></label>
@@ -276,7 +276,7 @@
                                 <img [src]=item.foto class="card-img-top" alt="{{item.nombre}}">
                             </div>
                             <div class="card-body">
-                                <h1 style="font-size: 1.5em; height: 85px;" class="card-title">{{item.nombre}}</h1>
+                                <h1  class="card-title">{{item.nombre}}</h1>
                                 <h2 class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</h2>
                                 <div class="card-button">
                                     <a rel="nofollow noopener noreferrer" target="_blank"
@@ -286,10 +286,8 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="producto.length===0" style="margin: auto; position: relative;">
-                        <p
-                            style="height: 500px; display: flex; justify-content: center;align-items: center;font-size: 2rem;">
-                            Not Found</p>
+                    <div *ngIf="producto.length===0"  class="notfound">
+                        <p class="notfound-text">Not Found</p>
                     </div>
                 </div>
             </article>

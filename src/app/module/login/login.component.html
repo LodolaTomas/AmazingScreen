@@ -1,6 +1,6 @@
 
 <div class="container d-flex align-items-center justify-content-center vh-100">
-    <div class="card" style="width: 30rem;">
+    <div class="card">
         <div class="card-body">
             <form novalidate (ngSubmit)="onLogin()" [formGroup]="productForm">
                 <fieldset>
@@ -11,7 +11,7 @@
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter email"
                             formControlName="email" [class]="isValidField('email')" autocomplete="on"/>
-                        <div class="invalid-feedback" style="font-family: sans-serif;">
+                        <div class="invalid-feedback">
                             <span *ngIf="productForm.get('email')?.errors?.required">
                                 Please enter your email
                             </span>
