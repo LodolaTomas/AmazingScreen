@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="Nav_Home">
     <div class="navbar__container container">
         <a class="navbar-brand" rel="nofollow noopener noreferrer">
-            <img src="ass" alt="Amazing Screeen - Argentina" class="navbar-img-logo">
+            <img src="assets/icons/logo.png" alt="Amazing Screeen - Argentina" class="navbar-img-logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
                 </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
+                data-bs-parent="#accordionFlushExample" >
                 <app-alta-monitor class="m-2"></app-alta-monitor>
             </div>
         </div>
@@ -43,7 +43,7 @@
                 </button>
             </h2>
             <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
-                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
+                data-bs-parent="#accordionFlushExample">
                 <app-alta-netbook class="m-2"></app-alta-netbook>
             </div>
         </div>
@@ -55,7 +55,7 @@
                 </button>
             </h2>
             <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
-                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
+                data-bs-parent="#accordionFlushExample">
                 <app-alta-placadeVideo class="m-2"></app-alta-placadeVideo>
             </div>
         </div>
@@ -67,9 +67,9 @@
                 </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                data-bs-parent="#accordionFlushExample" style="background-color: #2f3741; color: #f2f2f2f2;">
+                data-bs-parent="#accordionFlushExample">
                 <div class="flex-container mt-1">
-                    <div class="buscador mt-2" style="width: 100%;">
+                    <div class="buscador mt-2" >
                         <form class="navbar__search me-auto">
                             <input class="form-control me-1" type="search" placeholder="Buscar" aria-label="Search"
                                 [(ngModel)]="filterPost">
@@ -82,8 +82,8 @@
                             <img [src]=item.foto class="card-img-top" alt="{{item.nombre}}">
                         </div>
                         <div class="card-body">
-                            <h2 style="font-size: 1.5em; height: 70px;" class="card-title">{{item.nombre}}</h2>
-                            <p class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</p>
+                            <h2  class="card-title">{{item.nombre}}</h2>
+                            <p class="card-text" >{{item.descripcion}}</p>
                             <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal" (click)="editarMonitor(item)">
                                 Editar
@@ -120,7 +120,7 @@
                                 <div class="modal-body">
                                     
                                     <div class="form-floating">
-                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[2]"></textarea>
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20"  [(ngModel)]="info[2]"></textarea>
                                       </div>
                                 </div>
                                 <div class="modal-footer">
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-floating">
-                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[3]"></textarea>
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" [(ngModel)]="info[3]"></textarea>
                                       </div>
                                 </div>
                                 <div class="modal-footer">
@@ -171,7 +171,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-floating">
-                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[0]"></textarea>
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" [(ngModel)]="info[0]"></textarea>
                                       </div>
                                 </div>
                                 <div class="modal-footer">
@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-floating">
-                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" style="width: 100%;height: auto;" [(ngModel)]="info[1]"></textarea>
+                                        <textarea class="textarea" placeholder="Leave a comment here" id="floatingTextarea" rows="20" [(ngModel)]="info[1]"></textarea>
                                       </div>
                                 </div>
                                 <div class="modal-footer">
@@ -234,7 +234,7 @@
                         
                         <div class="form-group mt-4 col-md-6 d-flex justify-content-center align-items-center">
                             <label>ALTA</label>
-                            <input class="form-check-input" style="width: 30px; height: 30px;" type="checkbox" value=""
+                            <input class="form-check-input" type="checkbox" value=""
                                 id="flexCheckDefault" [(ngModel)]="edit_monitor.alta" />
                         </div>
                     </div>

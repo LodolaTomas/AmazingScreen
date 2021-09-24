@@ -1,56 +1,62 @@
-@media (min-width: 992px){
-    .whasppa-button .icon-wa {
-        border-radius: 0;
-        width: 50px;
-        height: 50px;
-        background-image: url(../../../assets/icons/icon-wa.png);
-        background-size: 31px 31px;
-    }
-    .whasppa-button {
-        right: 3.52rem;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        display: -o-flex;
-        display: -ms-flex;
-        display: -moz-flex;
-        display: -webkit-flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        background-color: #50c997;
-        color: #fff;
-        top: -50px;
-    }
-    .whasppa-button .text {
-        display: inline;
-        text-transform: uppercase;
-        padding: 0 30px;
-        text-decoration: none;
-    }
-    
+@media (min-width: 992px) {
+  .whasppa-button .icon-wa {
+    border-radius: 0;
+    width: 50px;
+    height: 50px;
+    background-image: url(../../../assets/icons/icon-wa.png);
+    background-size: 31px 31px;
+  }
+  .whasppa-button {
+    right: 3.52rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #50c997;
+    color: #fff;
+    top: -50px;
+  }
+  .whasppa-button .text {
+    display: inline;
+    text-transform: uppercase;
+    padding: 0 30px;
+    text-decoration: none;
+  }
 }
 
 .whasppa-button {
-    cursor: pointer;
-    outline: none;
-    border: none;
-    text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  position: fixed;
+  z-index: 99;
+  top: auto;
+  bottom: 0px;
+  right: 0;
+  opacity: 1;
+  border-radius: 5px;
 }
-@media (max-width: 992px){
-    .whasppa-button .text {
-        display: none;
-    }
+@media (max-width: 992px) {
+  .whasppa-button .text {
+    display: none;
+  }
 }
 
 .whasppa-button .icon-wa {
-    width: 69px;
-    height: 69px;
-    display: inline-block;
-    background-color: #49b588;
-    background-image: url(../../../assets/icons/icon-wa.png);
-    background-size: 39px 39px;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
+  width: 69px;
+  height: 69px;
+  display: inline-block;
+  background-color: #49b588;
+  background-image: url(../../../assets/icons/icon-wa.png);
+  background-size: 39px 39px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
 }

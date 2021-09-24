@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CheckLoginGuard } from 'src/app/guards/check-login.guard';
 import { AdminComponent } from './admin.component';
 
-const routes: Routes = [{ path: '', component: AdminComponent, canActivate:[CheckLoginGuard]}];
+const routes: Routes = [{ path: 'admin', component: AdminComponent, canActivate:[CheckLoginGuard]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
