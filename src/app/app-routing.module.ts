@@ -4,7 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: '', component: HomeComponent,pathMatch: 'full'
   },
   {
     path: 'login', loadChildren: () => import('./module/login/login.module').then(m => m.LoginModule)
@@ -12,7 +12,12 @@ const routes: Routes = [
   { 
     path: 'admin', loadChildren: () => import('./module/admin/admin.module').then(m => m.AdminModule)
   },
-  {path: '**', redirectTo: '' }
+  { 
+    path: 'footer', loadChildren: () => import('./module/footer/footer.module').then(m => m.FooterModule)
+  },
+  {
+    path: '**', redirectTo: '' 
+  }
 
 ];
 

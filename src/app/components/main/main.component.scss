@@ -7,12 +7,23 @@
   font-family: "Poppins", sans-serif;
   font-weight: 300;
 }
-main {
-  background: #ddd;
+img {
+  width: 100%;
+  height: auto;
+  align-items: center;
+  object-fit: contain;
+}
+.main {
+  background-color: #082032; 
+  color: #f2f2f2f2; 
+  border-radius: 5px;
 }
 aside {
-  background: #ccc;
+  background-color: #3A5675;
+  border-radius: 5px;
+  padding: .25rem;
 }
+
 @media screen and (min-width: 481px) and (min-width: 960px) {
   main {
     float: left;
@@ -77,10 +88,7 @@ aside {
 .card-img {
   display: flex;
   height: 300px;
-  img {
-    align-items: center;
-    object-fit: contain;
-  }
+  
 }
 .card-body {
   height: auto;
@@ -93,6 +101,15 @@ aside {
 }
 .card-title {
   text-align: center;
+  font-size: 1.5em; 
+  height: 85px;
+}
+.card-text{
+  font-size: 0.75em;
+}
+.form-search{
+  display: flex; 
+  padding: 1rem;
 }
 .accordion-body button {
   display: block;
@@ -110,6 +127,17 @@ aside {
 }
 .form-check {
   padding: 0 !important;
+}
+.notfound{
+  margin: auto; 
+  position: relative;
+}
+.notfound-text{
+  height: 500px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
 }
 
 .sidebar-toggle {

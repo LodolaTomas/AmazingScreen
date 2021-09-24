@@ -18,37 +18,15 @@ export class MainComponent implements OnInit {
     this.cosas= firebaseSrv.getAllProducts();
   }
   ngOnInit(): void {
-    /* this.search.currentMessage.subscribe(mensaje=>{
-      if(mensaje!=''){
-        this.setMessage(mensaje)
-      }
-    }) */
-     
-    /* if (window.matchMedia("(min-width: 960px)").matches) {
-      document.getElementById('collapseOne').classList.add("show");
-    }else{
-      document.getElementById('collapseOne').classList.remove('show');
-    } */
-
     $("#leftside-navigation .sub-menu > a").click(function(e) {
     $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
     e.stopPropagation()
   })
   }
-  
-
-  /* @HostListener('window:resize', ['$event']) onRezise() {
-    if (window.matchMedia("(min-width: 960px)").matches) {
-      document.getElementById('collapseOne').classList.add("show");
-    }else{
-      document.getElementById('collapseOne').classList.remove('show');
-    }
-  } */
 
   setMessage(mensaje:any){
     this.message=mensaje;
   }
-
   
   setFiltroAll(){
     this.filtro=eTipo.All;

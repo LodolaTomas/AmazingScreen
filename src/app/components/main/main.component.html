@@ -1,7 +1,7 @@
 <div class="container-xl">
     <app-carrusel></app-carrusel>
     <div class="flex">
-        <aside class="aside mt-1 sidebar" style="background-color: #3A5675; border-radius: 5px;padding: .25rem;">
+        <aside class="aside mt-1 sidebar">
             <div id="leftside-navigation" class="nano">
                 <ul class="nano-content">
                     <li>
@@ -262,8 +262,8 @@
             </div>
         </aside>
 
-        <main class="main mt-1" style="background-color: #082032; color: #f2f2f2f2; border-radius: 5px;">
-            <div class="form-search" aria-label="breadcrumb" style="display: flex; padding: 1rem; ">
+        <main class="main mt-1" >
+            <div class="form-search" aria-label="breadcrumb" >
                 <input class="form-control me-1" type="search" placeholder="Buscar" aria-label="Search"
                     [(ngModel)]="message">
                 <button class="btn btn-outline-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -273,11 +273,11 @@
                     <div class="card-item" *ngFor="let item of producto">
                         <div *ngIf="item.alta">
                             <div class="card-img">
-                                <img [src]=item.foto class="card-img-top" alt="{{item.nombre}}">
+                                <img  [src]=item.foto class="card-img-top" width="100%" height="auto" alt="{{item.nombre}}">
                             </div>
                             <div class="card-body">
-                                <h1 style="font-size: 1.5em; height: 85px;" class="card-title">{{item.nombre}}</h1>
-                                <h2 class="card-text" style="font-size: 0.75em;">{{item.descripcion}}</h2>
+                                <h1 class="card-title">{{item.nombre}}</h1>
+                                <h2 class="card-text">{{item.descripcion}}</h2>
                                 <div class="card-button">
                                     <a rel="nofollow noopener noreferrer" target="_blank"
                                         href="https://api.whatsapp.com/send?text=Hola, tenes stock de la {{item.nombre}}.&amp;phone=5491127262156"
@@ -286,10 +286,8 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="producto.length===0" style="margin: auto; position: relative;">
-                        <p
-                            style="height: 500px; display: flex; justify-content: center;align-items: center;font-size: 2rem;">
-                            Not Found</p>
+                    <div *ngIf="producto.length===0" class="notfound">
+                        <p class="notfound-text">Not Found</p>
                     </div>
                 </div>
             </article>
@@ -297,95 +295,3 @@
         </main>
     </div>
 </div>
-
-<!--<div class="card-item">
-                    <div class="card-img" *ngFor="let item of cosas">
-                        <img src="../../../assets/slider/MonitorTUFGamingVG259QM.png" class="card-img-top"
-                            alt="Monitor TUF Gaming VG259QM">
-                    </div>
-                    <div class="card-body">
-                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">ASUS TUF GAMING VG259QM</h2>
-                        <p class="card-text" style="font-size: 0.75em;"> Tamaño:24.5" | 280hz | 1920*1080 | IPS | G-Sync | 1ms </p>
-                        <div class="card-button">
-                            <a  rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Asus Tuf Gaming VG259QM.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
-                        </div>
-                    </div>
-                </div> \
-                    <div class="card-item">
-                    <div class="card-img">
-                        <img src="../../../assets/slider/PredatorXB271HU.png" class="card-img-top"
-                            alt="PredatorXB271HU">
-                    </div>
-                    <div class="card-body">
-                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">ACER PREDATOR XB271HU</h2>
-                        <p class="card-text" style="font-size: 0.75em;"> Tamaño:27" | 144hz | 2560*1440 | OVERCLOCK 165hz | G-Sync | 1ms GTG </p>
-                        <div class="card-button">
-                            <a  rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Acer predator XB271HU.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <div class="card-img">
-                        <img src="../../../assets/slider/TUFF15.png" class="card-img-top"
-                            alt="Monitor TUF Gaming VG259QM">
-                    </div>
-                    <div class="card-body">
-                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">ASUS TUF FX516PM GAMING</h2>
-                        <p class="card-text" style="font-size: 0.75em;"> Tamaño:15.6" | 144hz | i7 11th | RTX3060 | G-Sync | 1ms </p>
-                        <div class="card-button">
-                            <a  rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Asus Tuf Gaming FX516PM.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <div class="card-img">
-                        <img src="../../../assets/slider/Acer-monitor-VG271U-main.png" class="card-img-top"
-                            alt="Monitor TUF Gaming VG259QM">
-                    </div>
-                    <div class="card-body">
-                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">ACER NITRO VG217UP</h2>
-                        <p class="card-text" style="font-size: 0.75em;"> Tamaño:27" | 144hz | 2560*1440 | IPS | G-Sync | 1ms </p>
-                        <div class="card-button">
-                            <a  rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Acer Nitro VG217UP.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <div class="card-img">
-                        <img src="../../../assets/slider/ACER-XB273GX.png" class="card-img-top"
-                            alt="Monitor TUF Gaming VG259QM">
-                    </div>
-                    <div class="card-body">
-                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">ACER XB253Q GPbmiiprzx</h2>
-                        <p class="card-text" style="font-size: 0.75em;"> Tamaño:24.5" | 144hz | 1920*1080 | IPS | OVERCLOCK 160hz | 1ms </p>
-                        <div class="card-button">
-                            <a  rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Acer XB253Q Gpbmiiprzx.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <div class="card-img">
-                        <img src="../../../assets/slider/LG-monitor-01.png" class="card-img-top"
-                            alt="Monitor TUF Gaming VG259QM">
-                    </div>
-                    <div class="card-body">
-                        <h2 style="font-size: 1.5em; height: 70px;" class="card-title">MONITOR ULTRAGEAR</h2>
-                        <p class="card-text" style="font-size: 0.75em;"> Tamaño:34" | 144hz | 3440*1440 | IPS | G-Sync | 1ms </p>
-                        <div class="card-button">
-                            <a  rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la LG Ultragear.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <div class="card-img">
-                        <img src="../../../assets/slider/MonitorTUFGamingVG259QM.png" class="card-img-top"
-                            alt="Monitor TUF Gaming VG259QM">
-                    </div>
-                    <div class="card-body">
-                        <h2 style="font-size: 1.5em;" class="card-title">ASUS TUF GAMING VG27AQ</h2>
-                        <p class="card-text" style="font-size: 0.75em;"> Tamaño:27" | 144hz | OVERCLOCK 165hz | 2560*1440 | IPS | G-Sync | 1ms </p>
-                        <div class="card-button">
-                            <a rel="nofollow noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?text=Hola, tenes stock de la Asus Tuf Gaming VG27AQ.&amp;phone=5491127262156" class="btn btn-primary">Consultar Stock</a>
-                        </div>
-                    </div>
-                </div> -->

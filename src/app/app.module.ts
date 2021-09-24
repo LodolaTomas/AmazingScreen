@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainComponent } from './components/main/main.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { CarruselComponent } from './page/carrusel/carrusel.component';
 import { SliderComponent } from './page/slider/slider.component';
 
@@ -19,7 +18,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AdminModule } from './module/admin/admin.module';
 import { FilterPipe } from './pipe/filter.pipe';
 import { AltaGenComponent } from './components/Alta/alta-gen/alta-gen.component';
-
+import { FooterModule } from './module/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { AltaGenComponent } from './components/Alta/alta-gen/alta-gen.component'
     HeaderComponent,
     HomeComponent,
     MainComponent,
-    FooterComponent,
     CarruselComponent,
     SliderComponent,
     FilterPipe,
@@ -42,6 +40,7 @@ import { AltaGenComponent } from './components/Alta/alta-gen/alta-gen.component'
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AdminModule,
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent],
