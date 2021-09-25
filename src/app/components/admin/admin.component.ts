@@ -22,7 +22,6 @@ export class AdminComponent implements OnInit {
   quienesSomos:string;
   terminosCondiciones:string
   constructor(private authSvc: FirebaseService) {
-    console.log('ENTREE')
     this.producto = authSvc.getAllProducts();
     this.info=authSvc.getInfo();
   }

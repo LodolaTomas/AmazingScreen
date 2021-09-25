@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+@font-face {
+    font-family: Raleway;
+    src: url(assets/fonts/Raleway/static/Raleway-Medium.ttf);
+}
 /* font-family: 'Raleway', sans-serif; */
 .body{
     background-color: #334756;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,200&display=swap');
+@font-face {
+    font-family: Poppins;
+    src: url(assets/fonts/Poppins/Poppins-Light.ttf);
+}
 /* font-family: 'Poppins', sans-serif; */

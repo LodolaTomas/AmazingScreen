@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { CheckLoginGuard } from './guards/check-login.guard';
 
 const routes: Routes = [
   { 
@@ -10,13 +14,13 @@ const routes: Routes = [
     path: '', redirectTo: 'home', pathMatch: 'full' 
   },
   {
-    path: 'login', loadChildren: () => import('./module/login/login.module').then(m => m.LoginModule)
+    path: 'login', component:LoginComponent
   },
   {
-    path: 'admin', loadChildren: () => import('./module/admin/admin.module').then(m => m.AdminModule)
+    path: 'admin', component:AdminComponent, canActivate:[CheckLoginGuard]
   },
   {
-    path: 'footer', loadChildren: () => import('./module/footer/footer.module').then(m => m.FooterModule),
+    path: 'footer', component:FooterComponent
   },
   {
     path: '**', redirectTo: 'home'
@@ -25,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes/* , { useHash: true } */)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -15,23 +15,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import { AngularFireModule } from '@angular/fire';
-import { AdminModule } from './module/admin/admin.module';
 import { FilterPipe } from './pipe/filter.pipe';
 import { AltaGenComponent } from './components/Alta/alta-gen/alta-gen.component';
-import { FooterModule } from './module/footer/footer.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SearchPipe } from './pipe/search.pipe';
+import { AltaMonitorComponent } from './components/Alta/alta-monitor/alta-monitor.component';
+import { AltaplacadeVideoComponent } from './components/Alta/alta-grafica/alta-grafica.component';
+import { AltaNetbookComponent } from './components/Alta/alta-netbook/alta-netbook.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    SearchPipe,
     MainComponent,
     CarruselComponent,
     SliderComponent,
     FilterPipe,
     AltaGenComponent,
-    
+    LoginComponent,
+    FooterComponent,
+    AdminComponent,
+    AltaMonitorComponent,
+    AltaGenComponent,
+    AltaplacadeVideoComponent,
+    AltaNetbookComponent
   ],
   imports: [
     BrowserModule,
@@ -41,10 +53,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AdminModule,
-    FooterModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [/* {provide: LocationStrategy, useClass: HashLocationStrategy} */],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

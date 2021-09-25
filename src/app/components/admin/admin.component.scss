@@ -1,0 +1,123 @@
+form {
+  width: 40%;
+}
+nav {
+  background-color: #193549 !important;
+}
+@media (min-width: 1200px) {
+  .info {
+    word-break: break-all;
+    width: 70px;
+  }
+  .navbar-brand {
+    width: 20%;
+  }
+}
+@media (max-width: 1200px) {
+  form {
+    width: 100%;
+  }
+  .info {
+    font: 2.5rem;
+  }
+  .navbar-brand {
+    width: 12.5rem;
+    margin: 0 0 auto 0;
+  }
+}
+.navbar__search {
+  display: flex;
+  justify-content: center;
+}
+form {
+  margin: auto;
+}
+.form-control {
+  max-width: 20rem;
+}
+.info {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  color: #f2f2f2f2;
+}
+
+.navbar-nav a:hover {
+  border-bottom: 2px solid #00a9de;
+}
+
+.form-group {
+  input,
+  label {
+    margin: auto !important;
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-item {
+  margin: 1rem;
+  width: 20rem;
+  flex: content;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: #00a9de;
+  color: #f2f2f2f2;
+}
+
+.card-img {
+  display: flex;
+  height: 300px;
+  img {
+    align-items: center;
+    object-fit: contain;
+  }
+}
+.card-body {
+  height: 190px;
+  h2 {
+    text-align: center;
+  }
+}
+.card-item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.card-title {
+  text-align: center;
+}
+
+.accordion-button {
+  background-color: #2b5b7e;
+  color: #f2f2f2f2;
+}
+
+.accordion-collapse {
+  background-color: #2f3741;
+  color: #f2f2f2f2;
+}
+
+.buscador {
+  width: 100%;
+}
+
+.card-title {
+  font-size: 1.5em;
+  height: 70px;
+}
+.card-text {
+  font-size: 0.75em;
+}
+
+.textarea {
+  width: 100%;
+  height: auto;
+}
+
+.form-check-input {
+  width: 30px;
+  height: 30px;
+}
+
+
