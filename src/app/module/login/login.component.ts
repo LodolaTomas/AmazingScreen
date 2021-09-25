@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fireAuth:FirebaseService
   ) {
+    console.log("OLAAA")
     this.initForm();
   }
 

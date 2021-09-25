@@ -29,7 +29,8 @@ import { FooterModule } from './module/footer/footer.module';
     CarruselComponent,
     SliderComponent,
     FilterPipe,
-    AltaGenComponent
+    AltaGenComponent,
+    
   ],
   imports: [
     BrowserModule,
