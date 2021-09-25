@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
    this.fireAuth.doLogin(this.productForm.value.email,this.productForm.value.password)
    .then(resolve=>{
      if(resolve==true){
-      this.router.navigateByUrl('/admin')
+      this.router.navigateByUrl('admin')
      }
    })
   }

@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'admin', loadChildren: () => import('./module/admin/admin.module').then(m => m.AdminModule)
   },
   { 
-    path: 'footer', loadChildren: () => import('./module/footer/footer.module').then(m => m.FooterModule)
+    path: 'footer', loadChildren: () => import('./module/footer/footer.module').then(m => m.FooterModule),
   },
   {
     path: '**', redirectTo: '' 
@@ -22,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true,})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
   }
 
   login(){
-    location.assign('/login');
+    this.router.navigateByUrl('/login');
   }
 
 }

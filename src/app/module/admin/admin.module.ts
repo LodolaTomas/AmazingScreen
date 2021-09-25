@@ -22,6 +22,6 @@ import { AltaplacadeVideoComponent } from 'src/app/components/Alta/alta-grafica/
     ReactiveFormsModule,
     FormsModule
   ],
-  exports:[SearchPipe]
+  exports:[SearchPipe,AdminComponent]
 })
 export class AdminModule { }

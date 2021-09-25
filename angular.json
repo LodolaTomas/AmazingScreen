@@ -32,7 +32,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/_redirects"
+              {
+                "glob":"_redirects",
+                "input":"src",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -46,7 +50,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "15000kb",
                   "maximumError": "2mb"
                 },
                 {
@@ -64,8 +68,8 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
-              "optimization": false,
+              "buildOptimizer": true,
+              "optimization": true,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
