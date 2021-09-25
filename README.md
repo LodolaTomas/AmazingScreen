@@ -4,7 +4,7 @@
 
 Me enfoque en hacer que el diseño sea "lindo"(aunq no sea lo mio), responsive, dinamico, aprender un poco mas de SEO en cuanto a la forma de escribir html y usar buenas practicas en toda su estructura. Tambien me llevo tiempo entender como indexa google sus paginas, que cosas tengo que hacer para que se posicione mejor la pagina que otras, usar el .htcaccess para el redireccionamiento, sin www. y entender porque guardar en cache era una buena practica para mejorar el rendimiento de la pagina, usar G-ZIP y como hacerlo todo sin usar Wordpress. 
 
-Imagen de la estadistica de <a href="https://developers.google.com/web/tools/lighthouse?hl=es">Lighthouse</a>
+Imagen de la estadistica de <a href="https://developers.google.com/web/tools/lighthouse?hl=es">Lighthouse</a>. <br>
 ![image](https://user-images.githubusercontent.com/52363833/134788445-f7b1850d-a5a8-4eba-9df6-3edd4a45a503.png)
 
 
