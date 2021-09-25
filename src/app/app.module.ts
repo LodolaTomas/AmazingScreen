@@ -46,7 +46,7 @@ import { AltaNetbookComponent } from './components/Alta/alta-netbook/alta-netboo
     AltaNetbookComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
