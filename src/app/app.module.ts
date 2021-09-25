@@ -19,6 +19,7 @@ import { AdminModule } from './module/admin/admin.module';
 import { FilterPipe } from './pipe/filter.pipe';
 import { AltaGenComponent } from './components/Alta/alta-gen/alta-gen.component';
 import { FooterModule } from './module/footer/footer.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { FooterModule } from './module/footer/footer.module';
     AdminModule,
     FooterModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
