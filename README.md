@@ -1,6 +1,6 @@
 # AmazingScreen
 
-<a href="https://amazingscreens.com.ar/home">AmazingScreenArgentina</a> es una web page para realizar ventas de productos gaming y profesionales. La idea principal fue que la persona no comprara directamente a travez de la pagina sino mediante consultar el stock y hablar directamente con los vendedores por medio de whatsapp.
+<a href="https://amazingscreens.com.ar">AmazingScreenArgentina</a> es una web page para realizar ventas de productos gaming y profesionales. La idea principal fue que la persona no comprara directamente a travez de la pagina sino mediante consultar el stock y hablar directamente con los vendedores por medio de whatsapp.
 
 aki una foto de como es la pagina en su totalidad.
 ![image](https://user-images.githubusercontent.com/52363833/134788308-5ae4dee8-d763-4013-bff8-866bc0518c93.png)
