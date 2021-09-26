@@ -8,10 +8,7 @@ import { CheckLoginGuard } from './guards/check-login.guard';
 
 const routes: Routes = [
   { 
-    path: 'home', component: HomeComponent 
-  },
-  { 
-    path: '', redirectTo: 'home', pathMatch: 'full' 
+    path: '', component: HomeComponent,pathMatch: 'full'
   },
   {
     path: 'login', component:LoginComponent
@@ -23,7 +20,7 @@ const routes: Routes = [
     path: 'footer', component:FooterComponent
   },
   {
-    path: '**', redirectTo: 'home'
+    path: '**', redirectTo: ''
   }
 
 ];
