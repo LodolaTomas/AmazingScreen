@@ -8,7 +8,7 @@ aki una foto de como es la pagina en su totalidad.
 Imagen de la estadistica de <a href="https://developers.google.com/web/tools/lighthouse?hl=es">Lighthouse</a>. <br>
 ![image](https://user-images.githubusercontent.com/52363833/134788445-f7b1850d-a5a8-4eba-9df6-3edd4a45a503.png)
 
-Me enfoque en hacer que el diseño sea "lindo"(aunq no sea lo mio), responsive, dinamico, aprender un poco mas de SEO en cuanto a la forma de escribir html y usar buenas practicas en toda su estructura. Tambien me llevo tiempo entender como indexa google sus paginas, que cosas tengo que hacer para que se posicione mejor la pagina que otras, usar el .htcaccess para el redireccionamiento, sin www. y entender porque guardar en cache era una buena practica para mejorar el rendimiento de la pagina, usar G-ZIP y como hacerlo todo sin usar Wordpress(cada cosa que buscaba habia un plugin de Wordpress que lo solucionaba :'v ). 
+Me enfoque en hacer que el diseño sea "lindo"(aunq no sea mi fuerte), responsive, dinamico, aprender un poco mas de SEO en cuanto a la forma de escribir html y usar buenas practicas en toda su estructura. Tambien me llevo tiempo entender como indexa google sus paginas, que cosas tengo que hacer para que se posicione mejor la pagina que otras, usar el .htcaccess para el redireccionamiento, sin www. y entender porque guardar en cache era una buena practica para mejorar el rendimiento de la pagina, usar G-ZIP y como hacerlo todo sin usar Wordpress(cada cosa que buscaba habia un plugin de Wordpress que lo solucionaba :'v ). 
 
 Para el diseño mobile obviamente use bootstrap como se puede apreciar claramente en toda la pagina, es sencillo aunque en el fondo sus colores y su diseño me hace sentir que no es tan profecional.
 
