@@ -1,5 +1,5 @@
 footer {
-    color: #bbbbbb;
+    color: #7E7E78;
     background: #262626;
     border-radius: 0 0 5px 5px;
     .informacion {
@@ -30,7 +30,7 @@ footer {
       .info {
         text-decoration: none;
         cursor: pointer;
-        color: #3a5675;
+        color: #7E7E78;
         transition: color 0.3s;
       }
       .info:hover {
@@ -39,10 +39,13 @@ footer {
     }
     .modal-body {
       color: #262626;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      word-spacing: 2px;
     }
   
     .copyright {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       text-align: center;
     }
   
@@ -51,5 +54,12 @@ footer {
       width: 100%;
       height: 450px;
     }
+  }
+
+  a{
+    text-decoration: none;
+    list-style: none; 
+    color: #7E7E78;
+    cursor: pointer;
   }
   
