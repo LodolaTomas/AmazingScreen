@@ -1,12 +1,13 @@
 # AmazingScreen
 
-<a href="https://amazingscreens.com.ar/home">AmazingScreenArgentina</a> es una web page para realizar ventas de productos gaming y profesionales. La idea principal fue que la persona no comprara directamente a travez de la pagina sino mediante consultar el stock y hablar directamente con los vendedores por medio de whatsapp.
+<a href="https://amazingscreens.com.ar">AmazingScreenArgentina</a> es una web page para realizar ventas de productos gaming y profesionales. La idea principal fue que la persona no comprara directamente a travez de la pagina sino mediante consultar el stock y hablar directamente con los vendedores por medio de whatsapp.
 
 aki una foto de como es la pagina en su totalidad.
 ![image](https://user-images.githubusercontent.com/52363833/134788308-5ae4dee8-d763-4013-bff8-866bc0518c93.png)
 
 Imagen de la estadistica de <a href="https://developers.google.com/web/tools/lighthouse?hl=es">Lighthouse</a>. <br>
-![image](https://user-images.githubusercontent.com/52363833/134788445-f7b1850d-a5a8-4eba-9df6-3edd4a45a503.png)
+![image](https://user-images.githubusercontent.com/52363833/134794436-b1e25a14-b219-4612-b59f-c0f5b9f029d1.png)
+
 
 Me enfoque en hacer que el diseño sea "lindo"(aunq no sea mi fuerte), responsive, dinamico, aprender un poco mas de SEO en cuanto a la forma de escribir html y usar buenas practicas en toda su estructura. Tambien me llevo tiempo entender como indexa google sus paginas, que cosas tengo que hacer para que se posicione mejor la pagina que otras, usar el .htcaccess para el redireccionamiento, sin www. y entender porque guardar en cache era una buena practica para mejorar el rendimiento de la pagina, usar G-ZIP y como hacerlo todo sin usar Wordpress(cada cosa que buscaba habia un plugin de Wordpress que lo solucionaba :'v ). 
 
