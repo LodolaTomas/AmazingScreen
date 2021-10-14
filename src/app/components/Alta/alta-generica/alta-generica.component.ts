@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Notebook } from 'src/app/class/notebook';
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { Generico } from 'src/app/class/generico';
 import { eTipo } from 'src/app/class/producto';
 import { FirebaseService } from 'src/app/service/firebase.service';
-import { NgxImageCompressService } from 'ngx-image-compress';
+
 @Component({
-  selector: 'app-alta-netbook',
-  templateUrl: './alta-netbook.component.html',
-  styleUrls: ['./alta-netbook.component.scss']
+  selector: 'app-alta-generica',
+  templateUrl: './alta-generica.component.html',
+  styleUrls: ['./alta-generica.component.scss']
 })
-export class AltaNetbookComponent implements OnInit {
+export class AltaGenericaComponent implements OnInit {
+
   flag=false;
   productForm: FormGroup;
   foto1: File;
-  imgResultAfterCompress: any;
+  imgResultAfterCompress:string;
   classBotton="btn btn-danger";
   classloading="";
   texto="Sube una Foto";
@@ -26,51 +28,31 @@ export class AltaNetbookComponent implements OnInit {
 
   private initFormEspecialista(): void {
     this.productForm = this.fb.group({
-      nombre: ['', Validators.required],
-      modelo: ['', Validators.required],
-      tamanio: ['', Validators.required],
-      hertz: ['', Validators.required],
-      tiempoRespuesta: ['', Validators.required],
-      panel: ['', Validators.required],
-      resolucion: ['', Validators.required],
-      gsync: ['', Validators.required],
-      freesync: ['', Validators.required],
+      info: ['', Validators.required],
       foto: ['', Validators.required],
-      procesador: ['', Validators.required],
-      placadeVideo: ['', Validators.required],
-      capacidad: ['', Validators.required],
-      ram: ['', Validators.required],
+      tipo: ['',Validators.required],
     });
   }
   
   async onRegister() {
     this.flag=true;
-    let netbook: Notebook = new Notebook(
+    let productoGenerico: Generico = new Generico(
       '',
-      this.productForm.value.nombre,
-      this.productForm.value.modelo,
       this.foto1,
-      this.productForm.value.tamanio,
-      this.productForm.value.hertz,
-      this.productForm.value.tiempoRespuesta,
-      this.productForm.value.panel,
-      this.productForm.value.resolucion,
-      this.productForm.value.gsync,
-      this.productForm.value.freesync,
-      eTipo.Notebook,
-      this.productForm.value.procesador,
-      this.productForm.value.placadeVideo,
-      this.productForm.value.ram,
-      this.productForm.value.capacidad,
+      this.productForm.value.tipo,
+      this.productForm.value.info,
     );
-    
-    if ( await this.authSrv.createNetbook(netbook)) { 
+    if ( await this.authSrv.createProductoGenerico(productoGenerico)) { 
       this.flag=false;
       this.productForm.reset();
-      this.authSrv.alert('success', "Netbook Creada Correctamente"); 
+      this.authSrv.alert('success', "Placa de Video Creada Correctamente"); 
     }else{
       this.authSrv.alert('error',"Error!");
     }
+  }
+
+  onUpload1($event) {
+    this.foto1 = $event.target.files[0];
   }
   compressFile() {
     this.imageCompress.uploadFile().then(({ image, orientation }) => {
@@ -89,5 +71,4 @@ export class AltaNetbookComponent implements OnInit {
       );
     });
   }
-
 }

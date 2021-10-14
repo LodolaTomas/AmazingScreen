@@ -16,8 +16,7 @@
                 formControlName="ram" />
         </div>
         <div class="form-group mt-4 col-md-6">
-            <input type="file" class="form-control" aria-label="file example"
-                (change)="onUpload1($event)" formControlName="foto" />
+            <button type="button" id="banner-upload" class="{{classBotton}} form-control" formControlName="foto" (click)="compressFile()"><div class="{{classloading}} text-warning" role="status">{{texto}}</div></button>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto mt-4">
             <button type="submit" class="btn btn-success">

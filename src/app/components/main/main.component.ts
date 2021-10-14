@@ -10,45 +10,68 @@ declare var jQuery: any;
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  cosas:Array<any>=[];
-  message:string='';
-  filtro:eTipo=eTipo.All;
-  constructor(public search:BuscadorService,private firebaseSrv:FirebaseService) {
-    this.cosas.splice(0,this.cosas.length)
-    this.cosas= firebaseSrv.getAllProducts();
+  cosas: Array<any> = [];
+  message: string = '';
+  loading: boolean = false;
+  filtro: eTipo = eTipo.All;
+  constructor(public search: BuscadorService, private firebaseSrv: FirebaseService) {
+    this.cosas.splice(0, this.cosas.length)
+    this.cosas = firebaseSrv.getAllProducts();
+
   }
   ngOnInit(): void {
-    $("#leftside-navigation .sub-menu > a").click(function(e) {
-    $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
-    e.stopPropagation()
-  })
+    $("#leftside-navigation .sub-menu > a").click(function (e) {
+      $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
+        e.stopPropagation()
+    })
+    const slides = document.getElementsByClassName("card-item");
+
+    for (let i = 0; i < slides.length; i++) {
+        const slide = slides[i];
+      console.log(slide)
+    }
   }
 
-  setMessage(mensaje:any){
-    this.message=mensaje;
-  }
-  
-  setFiltroAll(){
-    this.filtro=eTipo.All;
+  setMessage(mensaje: any) {
+    this.message = mensaje;
   }
 
-  setFiltroMonitor(){
-    this.filtro=eTipo.Monitor;
+  setFiltroAll() {
+    this.filtro = eTipo.All;
   }
 
-  setFiltroNetbook(){
-    this.filtro=eTipo.Notebook;
+  setFiltroMonitor() {
+    this.filtro = eTipo.Monitor;
   }
 
-  setFiltroTG(){
-    this.filtro=eTipo.PlacadeVideo;
+  setFiltroNetbook() {
+    this.filtro = eTipo.Notebook;
   }
 
-  setFiltroProcesador(){
-    this.filtro=eTipo.Processador;
+  setFiltroTG() {
+    this.filtro = eTipo.PlacadeVideo;
   }
 
-  setFiltroPerifericos(){
-    this.filtro=eTipo.Periferico;
+  setFiltroProcesador() {
+    this.filtro = eTipo.Processador;
   }
+
+  setFiltroPerifericos() {
+    this.filtro = eTipo.Periferico;
+  }
+  setFiltroRAM() {
+    this.filtro = eTipo.MemoriaRAM;
+  }
+  setFiltroMother() {
+    this.filtro = eTipo.MotherBoard;
+  }
+  setFiltroPowerSupply() {
+    this.filtro = eTipo.Fuente;
+  }
+
+  setFiltroAlmacenamiento() {
+    this.filtro = eTipo.Almacenamiento;
+  }
+
+
 }

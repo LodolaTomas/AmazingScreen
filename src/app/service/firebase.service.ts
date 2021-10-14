@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore/';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Notebook } from '../class/notebook';
 import { PlacaVideo } from '../class/placaVideo';
-
+import * as firebase from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +24,7 @@ export class FirebaseService {
   footer: Array<any> = [];
   arrayProducts: Array<any> = [];
   constructor(private router: Router, public fireAuth: AngularFireAuth, private storage: AngularFireStorage,
-    private db: AngularFireDatabase, private ds: AngularFirestore, private authAF: AngularFireAuth) {
+    private db: AngularFireDatabase, private ds: AngularFirestore, private authAF: AngularFireAuth, private cloudFireStore: AngularFirestore) {
 
     this.productRef = this.db.list('/productos');
     this.productRef.snapshotChanges().subscribe(data => {
@@ -91,9 +91,9 @@ export class FirebaseService {
         }
         return false
       });
-      /* this.fireAuth.createUserWithEmailAndPassword(correo,password).then((userCredential)=>{
-        return true;
-      }); */
+    /* this.fireAuth.createUserWithEmailAndPassword(correo,password).then((userCredential)=>{
+      return true;
+    }); */
   }
 
   logout(): void {
@@ -130,26 +130,32 @@ export class FirebaseService {
   createMonitor(product: Monitor): Promise<boolean> {
     return new Promise(resolve => {
       try {
-        let ref = this.db.database.ref("/productos/");
         let uid = this.ds.createId();
         product.uid = uid;
-        let storageRef = this.storage.ref(`/${product.foto.name}`);
-        const task = this.storage.upload(`/${product.foto.name}`, product.foto).then(() => {
-          storageRef.getDownloadURL().toPromise().then(url => {
+        const filePath = `/${product.uid}.jpeg`;
+        const ref = this.storage.ref(filePath).putString(product.foto, 'base64', { contentType: 'image/jpeg' }).then(() => {
+          let storages = firebase.default.storage();
+          let storageRef = storages.ref();
+          let spaceRef = storageRef.child(filePath);
+          console.log("Subi la imagen");
+          spaceRef.getDownloadURL().then((url) => {
             product.foto = url;
-            ref.child(`${uid}`).set({
+            let refRT = this.db.database.ref("/users/");
+            refRT.child(`${uid}`).set({
               "uid": product.uid, "foto": product.foto, "nombre": `${product.nombre} ${product.modelo}`, "alta": true, "tipo": product.tipo,
               "descripcion": ` Tamaño:${product.tamanio} | Hertz:${product.hertz} | Resolucion:${product.resolucion}  ${product.gsync ? '| G-Sync |' : '|'}  tiempo Respuesta:${product.tiempoRespuesta} | Panel:${product.panel}`
-            });
-            resolve(true)
+            }).then(() => {
+              resolve(true);
+            }).catch(e => console.log(e));
           });
-        })
+        });
+        
       } catch (error) {
         console.log(error)
       }
     })
   }
-
+  
   updateMonitor(product: any): Promise<boolean> {
     return new Promise(resolve => {
       this.productRef.snapshotChanges().subscribe(element => {
@@ -178,8 +184,8 @@ export class FirebaseService {
         let ref = this.db.database.ref("/productos/");
         let uid = this.ds.createId();
         product.uid = uid;
-        let storageRef = this.storage.ref(`/${uid}/${product.foto.name}`);
-        const task = this.storage.upload(`/${uid}/${product.foto.name}`, product.foto).then(() => {
+        let storageRef = this.storage.ref(`/${uid}/${product.foto}`);
+        const task = this.storage.upload(`/${uid}/${product.foto}`, product.foto).then(() => {
           storageRef.getDownloadURL().toPromise().then(url => {
             product.foto = url;
             ref.child(`${uid}`).set({
@@ -220,8 +226,8 @@ export class FirebaseService {
         let ref = this.db.database.ref("/productos/");
         let uid = this.ds.createId();
         product.uid = uid;
-        let storageRef = this.storage.ref(`/${uid}/${product.foto.name}`);
-        const task = this.storage.upload(`/${uid}/${product.foto.name}`, product.foto).then(() => {
+        let storageRef = this.storage.ref(`/${uid}/${product.foto}`);
+        const task = this.storage.upload(`/${uid}/${product.foto}`, product.foto).then(() => {
           storageRef.getDownloadURL().toPromise().then(url => {
             product.foto = url;
             ref.child(`${uid}`).set({
@@ -252,6 +258,29 @@ export class FirebaseService {
           }
         })
       })
+    })
+  }
+
+  createProductoGenerico(product: any): Promise<boolean> {
+    return new Promise(resolve => {
+      try {
+        let ref = this.db.database.ref("/productos/");
+        let uid = this.ds.createId();
+        product.uid = uid;
+        let storageRef = this.storage.ref(`/${uid}/${product.foto}`);
+        const task = this.storage.upload(`/${uid}/${product.foto}`, product.foto).then(() => {
+          storageRef.getDownloadURL().toPromise().then(url => {
+            product.foto = url;
+            ref.child(`${uid}`).set({
+              uid: product.uid, foto: product.foto, alta: true, tipo: product.tipo,
+              descripcion: `${product.info}`
+            });
+            resolve(true);
+          });
+        })
+      } catch (error) {
+        console.log(error)
+      }
     })
   }
 

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlacaVideo } from 'src/app/class/placaVideo';
 import { eTipo } from 'src/app/class/producto';
 import { FirebaseService } from 'src/app/service/firebase.service';
-
+import { NgxImageCompressService } from 'ngx-image-compress';
 @Component({
   selector: 'app-alta-placadeVideo',
   templateUrl: './alta-grafica.component.html',
@@ -14,7 +14,11 @@ export class AltaplacadeVideoComponent implements OnInit {
   flag=false;
   productForm: FormGroup;
   foto1: File;
-  constructor(private authSrv:FirebaseService, private fb: FormBuilder) { 
+  imgResultAfterCompress: any;
+  classBotton="btn btn-danger";
+  classloading="";
+  texto="Sube una Foto";
+  constructor(private authSrv:FirebaseService, private fb: FormBuilder,private imageCompress: NgxImageCompressService) { 
     this.initFormEspecialista();
   }
 
@@ -49,9 +53,21 @@ export class AltaplacadeVideoComponent implements OnInit {
       this.authSrv.alert('error',"Error!");
     }
   }
-
-  onUpload1($event) {
-    this.foto1 = $event.target.files[0];
+  compressFile() {
+    this.imageCompress.uploadFile().then(({ image, orientation }) => {
+      this.texto='';
+      this.classloading="spinner-border";
+      /* console.warn('Size in bytes was:', this.imageCompress.byteCount(image)); */
+      this.imageCompress.compressFile(image, orientation, 50, 40).then(
+        result => {
+          /* console.log(result); */
+          this.classloading='';
+          this.texto="Foto Subida con Exito!"
+          this.imgResultAfterCompress = result.split(/,(.+)/)[1];
+          this.classBotton="btn btn-success";
+          /* console.warn('Size in bytes is now:', this.imageCompress.byteCount(result)); */
+        }
+      );
+    });
   }
-
 }

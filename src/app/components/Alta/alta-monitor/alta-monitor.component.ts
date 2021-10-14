@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxImageCompressService } from 'ngx-image-compress';
 import { Monitor } from 'src/app/class/monitor';
 import { eTipo } from 'src/app/class/producto';
 import { FirebaseService } from 'src/app/service/firebase.service';
@@ -12,8 +13,11 @@ import { FirebaseService } from 'src/app/service/firebase.service';
 export class AltaMonitorComponent implements OnInit {
   flag=false;
   productForm: FormGroup;
-  foto1: File;
-  constructor(private authSrv: FirebaseService, private fb: FormBuilder) {
+  imgResultAfterCompress: any;
+  classBotton="btn btn-danger";
+  classloading="";
+  texto="Sube una Foto";
+  constructor(private authSrv: FirebaseService, private fb: FormBuilder,private imageCompress: NgxImageCompressService) {
     this.initFormEspecialista();
   }
 
@@ -41,7 +45,7 @@ export class AltaMonitorComponent implements OnInit {
       '100',
       this.productForm.value.nombre,
       this.productForm.value.modelo,
-      this.foto1,
+      this.imgResultAfterCompress,
       this.productForm.value.tamanio,
       this.productForm.value.hertz,
       this.productForm.value.tiempoRespuesta,
@@ -56,14 +60,29 @@ export class AltaMonitorComponent implements OnInit {
       this.flag=false;
       this.productForm.reset();
       this.authSrv.alert('success', "Monitor Creada Correctamente"); 
+      this.classBotton="btn btn-danger";
+      this.texto='Sube una Foto'
     }else{
       this.authSrv.alert('error',"Error!");
     }
 
   }
 
-  onUpload1($event) {
-    this.foto1 = $event.target.files[0];
+  compressFile() {
+    this.imageCompress.uploadFile().then(({ image, orientation }) => {
+      this.texto='';
+      this.classloading="spinner-border";
+      /* console.warn('Size in bytes was:', this.imageCompress.byteCount(image)); */
+      this.imageCompress.compressFile(image, orientation, 50, 40).then(
+        result => {
+          /* console.log(result); */
+          this.classloading='';
+          this.texto="Foto Subida con Exito!"
+          this.imgResultAfterCompress = result.split(/,(.+)/)[1];
+          this.classBotton="btn btn-success";
+          /* console.warn('Size in bytes is now:', this.imageCompress.byteCount(result)); */
+        }
+      );
+    });
   }
-
 }

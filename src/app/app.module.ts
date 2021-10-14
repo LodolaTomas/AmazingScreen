@@ -16,7 +16,6 @@ import { environment } from 'src/environments/environment.prod';
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import { AngularFireModule } from '@angular/fire';
 import { FilterPipe } from './pipe/filter.pipe';
-import { AltaGenComponent } from './components/Alta/alta-gen/alta-gen.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -25,6 +24,8 @@ import { SearchPipe } from './pipe/search.pipe';
 import { AltaMonitorComponent } from './components/Alta/alta-monitor/alta-monitor.component';
 import { AltaplacadeVideoComponent } from './components/Alta/alta-grafica/alta-grafica.component';
 import { AltaNetbookComponent } from './components/Alta/alta-netbook/alta-netbook.component';
+import { AltaGenericaComponent } from './components/Alta/alta-generica/alta-generica.component';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @NgModule({
   declarations: [
@@ -36,14 +37,13 @@ import { AltaNetbookComponent } from './components/Alta/alta-netbook/alta-netboo
     CarruselComponent,
     SliderComponent,
     FilterPipe,
-    AltaGenComponent,
     LoginComponent,
     FooterComponent,
     AdminComponent,
     AltaMonitorComponent,
-    AltaGenComponent,
     AltaplacadeVideoComponent,
-    AltaNetbookComponent
+    AltaNetbookComponent,
+    AltaGenericaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -54,7 +54,7 @@ import { AltaNetbookComponent } from './components/Alta/alta-netbook/alta-netboo
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
   ],
-  providers: [/* {provide: LocationStrategy, useClass: HashLocationStrategy} */],
+  providers: [/* {provide: LocationStrategy, useClass: HashLocationStrategy} */NgxImageCompressService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

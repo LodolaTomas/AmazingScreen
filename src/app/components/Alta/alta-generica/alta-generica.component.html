@@ -1,0 +1,30 @@
+<form novalidate [formGroup]="productForm" (ngSubmit)="onRegister()" class="container-sm mb-3">
+    <div class="row">
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="descripcion">Informacion</label>
+            <input type="text" class="form-control" id="descripcion" placeholder="ej.: VG259QM"
+                formControlName="info" />
+        </div>
+        <div class="form-group mt-4 col-md-6 text-center">
+            <label for="tipo">Tipo</label>
+            <select class="form-select" id="tipo" name="tipo" ngModel="Selecciona un Tipo"
+                aria-label="Default select example" formControlName="tipo">
+                <option selected>Selecciona un Tipo</option>
+                <option value=3>Procesador</option>
+                <option value=5>Perifericos</option>
+                <option value=6>Memoria Ram</option>
+                <option value=7>MotherBoard</option>
+                <option value=8>Fuente</option>
+                <option value=9>Almacenamiento</option>
+            </select>
+        </div>
+        <div class="form-group mt-4 col-md-6">
+            <button type="button" id="banner-upload" class="{{classBotton}} form-control" formControlName="foto" (click)="compressFile()"><div class="{{classloading}} text-warning" role="status">{{texto}}</div></button>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto mt-4">
+            <button type="submit" class="btn btn-success">
+                Registrar
+            </button>
+        </div>
+    </div>
+</form>
